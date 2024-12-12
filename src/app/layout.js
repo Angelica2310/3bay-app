@@ -1,10 +1,4 @@
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
@@ -18,6 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
+        <body className="h-screen w-screen flex flex-col">{children}</body>
         <body>
           <NavBar>
             <SignedOut>
