@@ -6,9 +6,12 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
+import Footer from "@/components/Footer";
+import NavBar from "@/components/NavBar";
 export const metadata = {
   title: "3Bay",
   description: "3D product marketplace",
+  icons: "logo.png",
 };
 
 export default function RootLayout({ children }) {
@@ -16,13 +19,17 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body>
-          <SignedOut>
-            <SignInButton />
-          </SignedOut>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
+          <NavBar>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </NavBar>
+
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>
