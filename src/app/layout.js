@@ -12,16 +12,8 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="h-screen w-screen flex flex-col">{children}</body>
-        <body>
-          <NavBar>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </NavBar>
+        <body className="h-screen w-screen flex flex-col">
+          <NavBar />
 
           {children}
           <Footer />
