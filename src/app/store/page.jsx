@@ -6,8 +6,8 @@ import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 export default async function SellerStorePage() {
-  const clerkId = (await auth()).userId;
-  const user = await GetUser(clerkId);
+
+  const user = await GetUser();
   const shop = await GetShopByUserId(user.id);
 
   // console.log(shop, typeof shop);
