@@ -1,13 +1,21 @@
+import { GetUser } from "@/utils/actions";
+import { db } from "@/utils/db";
 import * as Form from "@radix-ui/react-form";
+import { revalidatePath } from "next/cache";
 
 async function handleAddShop(formData) {
   "use server";
+  const userId = (await GetUser()).id;
   const name = formData.get("name");
   const desc = formData.get("description");
   const city = formData.get("city");
   const shipping = formData.get("shipping");
   const theme = formData.get("theme");
-  console.log(shipping, theme);
+  await db.query(
+    `INSERT INTO shops (name, description, address, delivery_type, theme, user_id) VALUES ($1, $2, $3, $4, $5, $6)`,
+    [name, desc, city, shipping, theme, userId]
+  );
+  revalidatePath("/store");
 }
 // shop name, shop desc, address/location, shipping options, shop theme/personalisation
 
