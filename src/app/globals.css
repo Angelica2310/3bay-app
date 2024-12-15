@@ -21,7 +21,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .cart-button {
   border-radius: 1rem;
   border: 1px solid #0ea5e9;
@@ -34,6 +33,7 @@ body {
 .cart-button:hover {
   background-color: #0ea5e9;
   color: #ffffff;
+}
 
 .submit-style {
   @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-pink-600 hover:scale-105 transition;
@@ -45,5 +45,4 @@ body {
 
 .input-style {
   @apply w-1/2 px-3 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500;
-
 }
