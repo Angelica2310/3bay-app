@@ -6,7 +6,7 @@ import React from "react";
 export default async function FeatureProducts() {
   const products = (
     await db.query(`SELECT 
-   
+    products.id,
     products.name,
     products.description,
     products.price,
@@ -22,13 +22,10 @@ ON
 
   //   console.log("products limit", products);
   return (
-    <div
-      className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap "
-      key={products.id}
-    >
+    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product) => {
         return (
-          <div>
+          <div key={product.id}>
             <Link
               href={`/products/${product.id}`}
               className="w-full flex flex-col gap-4"
@@ -37,8 +34,8 @@ ON
                 <Image
                   src={product.images_url}
                   alt={product.name}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  style={{ objectFit: "cover" }}
                   sizes="25vw"
                   className="absolute rounded-md"
                 />
