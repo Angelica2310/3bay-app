@@ -7,7 +7,7 @@ import NavIcons from "./NavIcons";
 
 export default function NavBar() {
   return (
-    <div className="h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <div className="header">
       {/* MOBILE */}
       <div className="h-20 px-4 flex items-center justify-between md:hidden">
         <Link href="/">
@@ -22,7 +22,7 @@ export default function NavBar() {
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
           <Link href="/" className="flex items-center">
             <Image src="/logo.png" width={50} height={50} alt="logo" />
-            <div className="text-2xl tracking-wide">3Bay</div>
+            <div className="text-2xl tracking-wide">&nbsp;3Bay</div>
           </Link>
           <div className="hidden xl:flex gap-4">
             <Link href="/">Homepage</Link>

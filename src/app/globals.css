@@ -2,33 +2,57 @@
 @tailwind components;
 @tailwind utilities;
 
+/* BRAND COLOURS */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --prismarine: #127475; /* Primary background, base layer, secondary text.  Header */
+  --stormygreen: #0e9594; /* Alternative background, base layer, secondary text. Header or footer. Product card boarder */
+  --gingeralefizz: #f5dfbb; /* Product card neutral background.  Text and Icons */
+  --benihired: #f2542d; /* Accent colour = Call to action button.  Highlight text. Button base layer, links, highlighted pricing*/
+  --bratwurst: #562c2c; /* Accent colour = Text accents.  Primary text against ginger-ale pale background. Button hover. Footer*/
+  --white: #ffffff; /* contrast text */
+}
 
-  --dominant-color: #00928f; /* teal */
-  --accent-color: #ebb759; /* sunshine */
-  --darker-color: #092f3d; /* navy */
-  --neutral-color: #6f086c; /* pale blue */
-  --complimentary-color: #a3d5c5; /* pale teal */
-  --container-color: #acbbc1; /* light grey-blue */
-  --test-color: #ce14bf; /* light grey-blue */
+/* color switch TEST */
+.theme-winter {
+  --bg-color: #6a050c;
+  --text-color: #e9e4dc;
+  --accent-color: #07440c;
+}
+.theme-spring {
+  --bg-color: #d9ec8a;
+  --text-color: #1a0548;
+  --accent-color: #c67511;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--white);
+  background: var(--stormygreen);
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.submit-style {
-  @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-pink-600 hover:scale-105 transition;
+/* BODY STYLE */
+
+/* PAGE PLACEMENT */
+.page-placement-style {
+  @apply bg-prismarine flex items-center justify-center h-screen;
+}
+
+/* FORM STYLE */
+.form-border-style {
+  @apply flex flex-col items-center space-y-2 bg-gingeralefizz p-8 max-w-2xl rounded-md shadow-lg;
+}
+.input-style {
+  @apply text-black px-3 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-benihired;
 }
 
 .button-style {
-  @apply w-[200px] px-3 py-1 m-2 bg-orange-400 text-white font-medium rounded-lg hover:bg-pink-600 hover:scale-105 transition;
+  @apply w-[200px] px-3 py-1 m-2 bg-benihired text-white font-medium rounded-lg hover:bg-bratwurst hover:scale-105 transition;
 }
 
-.input-style {
-  @apply w-1/2 px-3 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500;
+/* HEADER AND FOOTER STYLE */
+.header {
+  @apply bg-bratwurst text-white h-14 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
+}
+.footer {
+  @apply bg-bratwurst text-white  h-8 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
 }
