@@ -8,7 +8,7 @@ export default function SearchBar() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("searching...");
+    // console.log("searching...");
 
     const formData = new FormData(e.currentTarget);
     const name = formData.get("name");
