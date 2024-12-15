@@ -1,6 +1,8 @@
-import { GetShopProducts } from "@/Utils/actions";
+
+import { GetShopProducts } from "@/utils/actions";
 import * as Dialog from "@radix-ui/react-dialog";
 import AddProductBtn from "./AddProductBtn";
+
 
 export default async function ShopDisplay({ shop }) {
   const products = await GetShopProducts(shop.id);

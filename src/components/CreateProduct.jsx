@@ -1,6 +1,8 @@
 import React from "react";
 import * as Form from "@radix-ui/react-form";
-import { db } from "@/Utils/db";
+
+import { db } from "@/utils/db";
+
 import { revalidatePath } from "next/cache";
 
 export default async function CreateProduct({ shopId }) {

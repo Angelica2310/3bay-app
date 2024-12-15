@@ -1,5 +1,5 @@
-import { GetUser } from "@/Utils/actions";
-import { db } from "@/Utils/db";
+import { GetUser } from "@/utils/actions";
+import { db } from "@/utils/db";
 import * as Form from "@radix-ui/react-form";
 import { revalidatePath } from "next/cache";
 

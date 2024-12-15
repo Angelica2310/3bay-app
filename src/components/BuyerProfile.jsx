@@ -2,7 +2,7 @@
 // links to Search Page - CHANGE TO CORRECT PATH BELOW
 
 import Link from "next/link";
-import { db } from "@/Utils/db";
+import { db } from "@/utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import * as Form from "@radix-ui/react-form";
