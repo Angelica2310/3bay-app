@@ -1,7 +1,7 @@
 // This is the profile page
 
 import { auth } from "@clerk/nextjs/server";
-import { db } from "@/utils/db";
+import { db } from "@/Utils/db";
 import BuyerProfile from "@/components/BuyerProfile";
 import SellerProfile from "@/components/SellerProfile";
 import { CheckForUser } from "@/utils/actions";
