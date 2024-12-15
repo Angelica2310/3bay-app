@@ -45,7 +45,7 @@ ON
                 <span className="font-medium">{product.name}</span>
                 <span className="font-semibold">£{product.price}</span>
               </div>
-              <div className="text-sm text-gray-500">
+              <div className="text-sm text-gingeralefizz ">
                 {product.description}{" "}
               </div>
               <button className="cart-button">Add to Cart</button>
@@ -53,7 +53,6 @@ ON
           </div>
         );
       })}
-      ;
     </div>
   );
 }
