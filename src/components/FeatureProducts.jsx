@@ -1,4 +1,4 @@
-import { db } from "@/Utils/db";
+import { db } from "@/utils/db";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -22,7 +22,10 @@ ON
 
   //   console.log("products limit", products);
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap ">
+    <div
+      className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap "
+      key={1}
+    >
       {products.map((product) => {
         return (
           <div key={products.id}>
