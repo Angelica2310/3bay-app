@@ -30,7 +30,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 /* BODY STYLE */
 
 /* PAGE PLACEMENT */
@@ -44,6 +43,7 @@ body {
 }
 .input-style {
   @apply text-black px-3 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-benihired;
+}
 
 .cart-button {
   border-radius: 1rem;
@@ -61,7 +61,6 @@ body {
 
 .submit-style {
   @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-pink-600 hover:scale-105 transition;
-
 }
 
 .button-style {
