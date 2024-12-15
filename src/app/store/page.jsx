@@ -1,6 +1,6 @@
 import CreateShopForm from "@/components/CreateShopForm";
 import ShopDisplay from "@/components/ShopDisplay";
-import { GetUser, GetShopByUserId } from "@/Utils/actions";
+import { GetUser, GetShopByUserId } from "@/utils/actions";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 

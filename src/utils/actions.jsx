@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/server";
-import { db } from "@/Utils/db";
+import { db } from "@/utils/db";
 
 // Returns user object if user exists, otherwise returns undefined. Optional argument to pass a clerk_id, else it defaults to check currently logged in user.
 export async function GetUser(clerk_id) {
