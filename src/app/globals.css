@@ -47,15 +47,15 @@ body {
 
 .cart-button {
   border-radius: 1rem;
-  border: 1px solid #0ea5e9;
-  color: #0ea5e9;
+  border: 2px solid var(--bratwurst);
+  color: var(--bratwurst);
   width: max-content;
   padding: 0.5rem 1rem;
   font-size: 0.75rem;
   transition: background-color 0.3s, color 0.3s;
 }
 .cart-button:hover {
-  background-color: #0ea5e9;
+  background-color: var(--bratwurst);
   color: #ffffff;
 }
 
@@ -72,5 +72,5 @@ body {
   @apply bg-bratwurst text-white h-14 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
 }
 .footer {
-  @apply bg-bratwurst text-white  h-8 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
+  @apply py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 text-sm mt-24 bg-bratwurst;
 }

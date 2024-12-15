@@ -4,7 +4,6 @@ import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
-
   const paymentImages = [
     { src: "/applepay.png", alt: "Apple Pay" },
     { src: "/paypal.png", alt: "PayPal" },
@@ -13,7 +12,7 @@ export default function Footer() {
   ];
 
   return (
-    <div className="py-24 px-4 md:px-8 lg:px-16 xl:32 2xl:px-64 bg-gray-100 text-sm mt-24">
+    <div className="footer">
       {/* TOP */}
       <div className="flex flex-col md:flex-row justify-between gap-24">
         {/* LEFT */}
@@ -57,7 +56,7 @@ export default function Footer() {
               placeholder="Email address"
               className="p-4 w-3/4 outline-none"
             />
-            <button className="w-1/4 bg-sky-600 text-white">JOIN</button>
+            <button className="w-1/4 bg-stormygreen text-white">JOIN</button>
           </div>
           <span className="font-semibold">Secure Payments</span>
           <div className="flex justify-between">
@@ -79,5 +78,4 @@ export default function Footer() {
       </div>
     </div>
   );
-
 }

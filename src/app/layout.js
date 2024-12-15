@@ -10,7 +10,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        variables: {
+          colorPrimary: "#127475",
+          colorText: "black",
+        },
+      }}
+    >
       <html lang="en">
         <body className="h-screen w-screen flex flex-col">
           <NavBar />

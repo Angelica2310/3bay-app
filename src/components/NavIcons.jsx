@@ -20,7 +20,7 @@ export default function NavIcons() {
 
       <SignedIn>
         <Link href="/user"></Link>
-        <UserButton showName />
+        <UserButton />
       </SignedIn>
       <div className="relative cursor-pointer">
         <ShoppingCart onClick={() => setCartOpen((prev) => !prev)} />

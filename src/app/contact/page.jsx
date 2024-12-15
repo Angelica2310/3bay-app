@@ -3,32 +3,30 @@ import React from "react";
 export default function ContactUsPage() {
   return (
     <div>
-      <section class="bg-white ">
-        <div class="container px-6 py-12 mx-auto">
+      <section>
+        <div className="container px-6 py-12 mx-auto">
           <div>
-            <p class="font-medium text-blue-500 dark:text-blue-400">
-              Contact us
-            </p>
+            <p className="font-medium ">Contact us</p>
 
-            <h1 class="mt-2 text-2xl font-semibold text-gray-800 md:text-3xl">
+            <h1 className="mt-2 text-2xl font-semibold  md:text-3xl">
               We’d love to hear from you
             </h1>
 
-            <p class="mt-3 text-gray-500 dark:text-gray-400">
+            <p className="mt-3 text-gingeralefizz">
               Our friendly team is always here to chat.
             </p>
           </div>
 
-          <div class="grid grid-cols-1 gap-12 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800">
-              <span class="inline-block p-3 text-blue-500 rounded-lg bg-blue-100/80 dark:bg-gray-700">
+          <div className="grid grid-cols-1 gap-12 mt-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div className="p-4 rounded-lg bg-bratwurst md:p-6 ">
+              <span className="inline-block p-3 text-stormygreen rounded-lg bg-gingeralefizz ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                 >
                   <path
                     stroke-linecap="round"
@@ -38,26 +36,24 @@ export default function ContactUsPage() {
                 </svg>
               </span>
 
-              <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              <h2 className="mt-4 text-base font-medium text-white">
                 Chat to sales
               </h2>
-              <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 Speak to our friendly team.
               </p>
-              <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                hello@3bay.co.uk
-              </p>
+              <p className="mt-2 text-sm text-stormygreen">hello@3bay.co.uk</p>
             </div>
 
-            <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800">
-              <span class="inline-block p-3 text-blue-500 rounded-lg bg-blue-100/80 dark:bg-gray-700">
+            <div className="p-4 rounded-lg bg-bratwurst md:p-6 ">
+              <span className="inline-block p-3 text-stormygreen rounded-lg bg-gingeralefizz">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                 >
                   <path
                     stroke-linecap="round"
@@ -72,26 +68,24 @@ export default function ContactUsPage() {
                 </svg>
               </span>
 
-              <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              <h2 className="mt-4 text-base font-medium text-white">
                 Chat to support
               </h2>
-              <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 We’re here to help.
               </p>
-              <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                Start new chat
-              </p>
+              <p className="mt-2 text-sm text-stormygreen">Start new chat</p>
             </div>
 
-            <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800">
-              <span class="inline-block p-3 text-blue-500 rounded-lg bg-blue-100/80 dark:bg-gray-700">
+            <div className="p-4 rounded-lg bg-bratwurst md:p-6 ">
+              <span className="inline-block p-3 text-stormygreen rounded-lg bg-gingeralefizz">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                 >
                   <path
                     stroke-linecap="round"
@@ -106,26 +100,26 @@ export default function ContactUsPage() {
                 </svg>
               </span>
 
-              <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
+              <h2 className="mt-4 text-base font-medium text-white">
                 Visit us
               </h2>
-              <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 Visit our office HQ..
               </p>
-              <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
+              <p className="mt-2 text-sm text-stormygreen">
                 123 Main Street, Hull HU1 23AB, United Kingdom
               </p>
             </div>
 
-            <div class="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800">
-              <span class="inline-block p-3 text-blue-500 rounded-lg bg-blue-100/80 dark:bg-gray-700">
+            <div className="p-4 rounded-lg bg-bratwurst md:p-6 ">
+              <span className="inline-block p-3 text-stormygreen rounded-lg bg-gingeralefizz">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                 >
                   <path
                     stroke-linecap="round"
@@ -135,15 +129,11 @@ export default function ContactUsPage() {
                 </svg>
               </span>
 
-              <h2 class="mt-4 text-base font-medium text-gray-800 dark:text-white">
-                Call us
-              </h2>
-              <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <h2 className="mt-4 text-base font-medium text-white">Call us</h2>
+              <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                 Mon-Fri from 8am to 5pm.
               </p>
-              <p class="mt-2 text-sm text-blue-500 dark:text-blue-400">
-                +44 234 567 890
-              </p>
+              <p className="mt-2 text-sm text-stormygreen">+44 234 567 890</p>
             </div>
           </div>
         </div>

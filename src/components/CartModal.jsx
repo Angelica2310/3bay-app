@@ -10,7 +10,7 @@ export default function CartModal() {
         <div>Cart is empty</div>
       ) : (
         <>
-          <h2 className="text-xl">Shopping Cart</h2>
+          <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
           {/* // CART ITEMS */}
           <div className="flex flex-col gap-8">
             {/* ITEM */}
@@ -27,8 +27,10 @@ export default function CartModal() {
                 <div>
                   {/* TITLE */}
                   <div className="flex items-center justify-between gap-8">
-                    <h3 className="font-semibold">Product Title</h3>
-                    <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+                    <h3 className="font-semibold text-bratwurst">
+                      Product Title
+                    </h3>
+                    <div className="p-1 bg-bratwurst rounded-sm flex items-center gap-2">
                       £10
                     </div>
                   </div>
@@ -56,8 +58,10 @@ export default function CartModal() {
                 <div>
                   {/* TITLE */}
                   <div className="flex items-center justify-between gap-8">
-                    <h3 className="font-semibold">Product Title</h3>
-                    <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+                    <h3 className="font-semibold text-bratwurst">
+                      Product Title
+                    </h3>
+                    <div className="p-1 bg-bratwurst rounded-sm flex items-center gap-2">
                       £10
                     </div>
                   </div>
@@ -74,7 +78,7 @@ export default function CartModal() {
           </div>
           {/* // BOTTOM */}
           <div>
-            <div className="flex items-center justify-between font-semibold">
+            <div className="flex items-center justify-between font-semibold text-bratwurst">
               <span>Subtotal</span>
               <span>£20</span>
             </div>
@@ -82,10 +86,10 @@ export default function CartModal() {
               Shipping and taxes calculated at checkout
             </p>
             <div className="flex justify-between text-sm">
-              <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">
+              <button className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst">
                 View Cart
               </button>
-              <button className="rounded-md py-3 px-4 bg-black text-white">
+              <button className="rounded-md py-3 px-4 bg-bratwurst text-white">
                 Checkout
               </button>
             </div>
