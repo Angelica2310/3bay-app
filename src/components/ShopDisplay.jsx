@@ -1,4 +1,4 @@
-import { GetShopProducts } from "@/utils/actions";
+import { GetShopProducts } from "@/Utils/actions";
 
 export default async function ShopDisplay({ shop }) {
   const products = await GetShopProducts(shop.id);

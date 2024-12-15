@@ -1,12 +1,10 @@
 import CreateShopForm from "@/components/CreateShopForm";
 import ShopDisplay from "@/components/ShopDisplay";
-import { GetUser, GetShopByUserId } from "@/utils/actions";
+import { GetUser, GetShopByUserId } from "@/Utils/actions";
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 
 export default async function SellerStorePage() {
-
   const user = await GetUser();
   const shop = await GetShopByUserId(user.id);
 

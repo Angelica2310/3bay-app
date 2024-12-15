@@ -25,7 +25,7 @@ ON
       <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap ">
         {products.map((product) => {
           return (
-            <div key={products.id}>
+            <div key={product.id}>
               <Link
                 href={`/products/${product.id}`}
                 className="w-full flex flex-col gap-4"

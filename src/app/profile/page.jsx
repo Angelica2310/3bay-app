@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/Utils/db";
 import BuyerProfile from "@/components/BuyerProfile";
 import SellerProfile from "@/components/SellerProfile";
-import { CheckForUser } from "@/utils/actions";
+import { CheckForUser } from "@/Utils/actions";
 
 export default async function ProfilePage() {
   const { userId } = await auth();
