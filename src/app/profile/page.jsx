@@ -1,10 +1,10 @@
 // This is the profile page
 
 import { auth } from "@clerk/nextjs/server";
-import { db } from "@/Utils/db";
+import { db } from "@/utils/db";
 import BuyerProfile from "@/components/BuyerProfile";
 import SellerProfile from "@/components/SellerProfile";
-import { CheckForUser } from "@/Utils/actions";
+import { CheckForUser } from "@/utils/actions";
 
 export default async function ProfilePage() {
   const { userId } = await auth();

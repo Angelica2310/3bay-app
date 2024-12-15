@@ -1,4 +1,4 @@
-import { db } from "@/Utils/db";
+import { db } from "@/utils/db";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,6 +7,7 @@ Link;
 export default async function FeatureProducts() {
   const products = (
     await db.query(`SELECT 
+    products.id,
     products.name,
     products.description,
     products.price,
@@ -34,8 +35,8 @@ ON
                   <Image
                     src={product.images_url}
                     alt={product.name}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: "cover" }}
                     sizes="25vw"
                     className="absolute rounded-md"
                   />
