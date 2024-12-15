@@ -8,7 +8,7 @@ export default async function CreateProduct(shopId) {
   //shop_id in props
   async function handleSubmit(formData) {
     "use server";
-    //const userId = GetUser();
+    const userId = GetUser();
 
     const productName = formData.get("productName");
     const description = formData.get("description");
@@ -23,22 +23,27 @@ export default async function CreateProduct(shopId) {
         "INSERT INTO products (name, description, price, shipping, shop_id) VALUES ($1,$2,$3,$4,(SELECT id FROM shops WHERE user_id = $5)) RETURNING id",
         [productName, description, price, shippingCost, userId]
       )
-    ).rows;
-    const s3names = (
+    ).rows; //NEED TO ADD SO MANY CHECKS FOR IF MODEL IS GLB AND STUFF ALTHOUGH INPUT SHOULD HAVE CONSIDERED THAT ALSO NEED CORRECT ERROR MESSAGING FOR FILE SIZE
+    const imgId = (
       await db.query(
-        "INSERT INTO images (products_id) VALUES ($1),($1) RETURNING id",
-        [id]
+        "INSERT INTO images (products_id, name, model) VALUES ($1,$2) RETURNING id",
+        [id, image.name]
       )
     ).rows;
-
+    const glbId = (
+      await db.query(
+        "INSERT INTO glbs (product_id, name) VALUES ($1,$2) RETURNING id",
+        [id, glbModel.name]
+      )
+    ).rows;
     await fetch(
       //3bay-files should be an ENV VARIABLE
-      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${s3names[0]}`,
+      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${imgId[0]}`,
       { method: "PUT", body: image, headers: { "Content-Type": image.type } }
     );
     await fetch(
       //3bay-files should be an ENV VARIABLE
-      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${s3names[1]}`,
+      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${glbId[0]}`,
       {
         method: "PUT",
         body: glbModel,

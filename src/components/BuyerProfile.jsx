@@ -5,6 +5,7 @@ import Link from "next/link";
 import { db } from "@/Utils/db";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
+import * as Form from "@radix-ui/react-form";
 
 export default async function BuyerProfile() {
   const { userId } = await auth();
@@ -24,37 +25,41 @@ export default async function BuyerProfile() {
   }
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center h-screen">
-      <div
-        className="flex flex-col items-center space-y-6 bg-white p-8 max-w-2xl rounded-md shadow-lg
-    "
-      >
+    <div className="page-placement-style">
+      <div className="form-border-style">
         <img
           src="https://via.placeholder.com/150"
           alt="Profile pic"
           className="w-24 h-24 rounded-full border-4 border-gray-300"
         />
-        <input
-          type="user_name"
-          placeholder="user name"
-          className="input-style"
-        ></input>
-
-        <input
-          type="email"
-          placeholder="email address"
-          className="input-style"
-        ></input>
-
-        <button className="submit-style">Submit</button>
-
+        <Form.Root action={handleSubmit}>
+          <Form.Field name="username">
+            <div>
+              <Form.Label className="text-black">User Name:</Form.Label>
+            </div>
+            <Form.Control asChild>
+              <input type="text" required className="input-style" />
+            </Form.Control>
+          </Form.Field>
+          <Form.Field name="email">
+            <div>
+              <Form.Label className="text-black">Email Address:</Form.Label>
+            </div>
+            <Form.Control asChild>
+              <input type="text" required className="input-style" />
+            </Form.Control>
+          </Form.Field>
+        </Form.Root>
+        <Link href="/">
+          <button className="button-style">Submit</button>
+        </Link>
         <div>
           <Link href="/">
             <button className="button-style">Become a Seller</button>
           </Link>
         </div>
 
-        <div className="w-full bg-gray-200 p-4 rounded-lg mt-6">
+        <div className="w-full bg-white p-4 rounded-lg mt-6">
           <h2 className="text-lg font-semibold text-gray-800">
             Recently Viewed Products
           </h2>

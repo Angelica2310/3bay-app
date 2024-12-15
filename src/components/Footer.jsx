@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 export default function Footer() {
+
   const paymentImages = [
     { src: "/applepay.png", alt: "Apple Pay" },
     { src: "/paypal.png", alt: "PayPal" },
@@ -78,4 +79,5 @@ export default function Footer() {
       </div>
     </div>
   );
+
 }
