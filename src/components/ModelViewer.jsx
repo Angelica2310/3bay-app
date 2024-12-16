@@ -15,6 +15,7 @@ export default function Modelviewer({ id }) {
         shadow-intensity="1"
         camera-controls
         touch-action="pan-y"
+        className="w-60 h-60"
       ></model-viewer>
     </div>
   );
