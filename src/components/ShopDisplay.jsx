@@ -1,8 +1,7 @@
-
 import { GetShopProducts } from "@/utils/actions";
 import * as Dialog from "@radix-ui/react-dialog";
 import AddProductBtn from "./AddProductBtn";
-
+import Product from "./Product";
 
 export default async function ShopDisplay({ shop }) {
   const products = await GetShopProducts(shop.id);
@@ -18,26 +17,13 @@ export default async function ShopDisplay({ shop }) {
       {!products ? (
         <p>No products yet...</p>
       ) : (
-        <div className="grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray-600 py-4 my-20 text-white rounded-2xl">
+        <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+          {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray-600 py-4 my-20 text-white rounded-2xl"*/}
           {!products[1] ? (
-            <div className="text-center text-lg">
-              <p>[Image]</p>
-              <h2>{products.name}</h2>
-              {/* <p>Descrpition: {products.description}</p> */}
-              <p>£{products.price}</p>
-              {/* <p>Shipping {products.shipping}</p> */}
-            </div>
+            <Product product={products} />
           ) : (
             products.map((product) => {
-              return (
-                <div key={product.id} className="text-center text-xl px-1 py-4">
-                  <p>[Image]</p>
-                  <h2 className="py-1">{product.name}</h2>
-                  {/* <p>Description: {product.description}</p> */}
-                  <p>£{product.price}</p>
-                  {/* <p>Shipping: {product.shipping}</p> */}
-                </div>
-              );
+              return <Product product={product} />;
             })
           )}
         </div>

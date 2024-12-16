@@ -21,17 +21,18 @@ export default async function Product({ product }) {
 
     return (
       <>
-        {product.images_url === null ? (
+        {altImg.url === null ? (
           <Image
             alt={altImg.name}
             src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${altImg.id}`}
             width={sideLng}
             height={sideLng}
+            className="rounded-md"
           />
         ) : (
           <div className="relative w-60 h-60">
             <Image
-              src={product.images_url}
+              src={altImg.url}
               alt={altImg.id}
               fill
               style={{ objectFit: "cover" }}

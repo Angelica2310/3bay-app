@@ -2,10 +2,22 @@
 // links to the form to create/edit shop OR shop page - CHANGE TO CORRECT PATH BELOW
 
 import Link from "next/link";
-
+import * as Form from "@radix-ui/react-form";
 export default function SellerProfile() {
   //revalidatePath("/");
+  async function handleSubmit(formData) {
+    "use server";
+    const username = formData.get("username");
+    const email = formData.get("email");
+    //console.log(username);
 
+    db.query(
+      `INSERT INTO users (username, email, clerk_id) VALUES ($1, $2, $3)`,
+      [username, email, userId]
+    );
+
+    revalidatePath("/");
+  }
   return (
     <div className="page-placement-style">
       <div className="form-border-style">
