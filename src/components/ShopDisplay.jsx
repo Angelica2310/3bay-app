@@ -23,7 +23,7 @@ export default async function ShopDisplay({ shop }) {
             <Product product={products} />
           ) : (
             products.map((product) => {
-              return <Product product={product} />;
+              return <Product product={product} key={product.id} />;
             })
           )}
         </div>

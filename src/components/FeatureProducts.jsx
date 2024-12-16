@@ -25,7 +25,7 @@ ON
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product) => {
-        return <Product product={product} />;
+        return <Product product={product} key={product.id} />;
         {
           /* 
           <div key={product.id}>
