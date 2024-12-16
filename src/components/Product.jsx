@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Modelviewer from "./ModelViewer";
 
-export default async function Product({ product }) {
+export default async function Product({ product, ownShop }) {
   const sideLng = 240;
   const modelData = await db.query(
     "SELECT * FROM glbs WHERE product_id = $1  LIMIT 1",
@@ -62,7 +62,13 @@ export default async function Product({ product }) {
         <span className="font-semibold">£{product.price}</span>
       </div>
       <div className="text-sm text-gray-500">{product.description}</div>
-      <button className="cart-button">Add to Cart</button>
+      {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
+      {ownShop ? (
+        <button className="cart-button">Edit Product</button>
+      ) : (
+        <button className="cart-button">Add to Cart</button>
+      )}
+      {/* <button className="cart-button">Add to Cart</button> */}
     </Link>
   );
 }

@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import AddProductBtn from "./AddProductBtn";
 import Product from "./Product";
 
-export default async function ShopDisplay({ shop }) {
+export default async function ShopDisplay({ shop, ownShop }) {
   const products = await GetShopProducts(shop.id);
 
   return (
@@ -11,7 +11,7 @@ export default async function ShopDisplay({ shop }) {
       <div className="my-10 flex flex-col items-center">
         <h2 className="text-4xl">{shop.name}</h2>
         <p className="pt-2 text-xl">{shop.description}</p>
-        <AddProductBtn shopId={shop.id} />
+        {ownShop && <AddProductBtn shopId={shop.id} />}
       </div>
       {/* Render this if no products associated with shop  */}
       {!products ? (
@@ -23,7 +23,9 @@ export default async function ShopDisplay({ shop }) {
             <Product product={products} />
           ) : (
             products.map((product) => {
-              return <Product product={product} key={product.id} />;
+              return (
+                <Product product={product} key={product.id} ownShop={ownShop} />
+              );
             })
           )}
         </div>
