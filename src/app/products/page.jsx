@@ -1,8 +1,8 @@
 import { db } from "@/utils/db";
-import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-Link;
+import CartModal from "@/components/CartModal";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export default async function FeatureProducts() {
   const products = (
@@ -49,8 +49,8 @@ ON
                 <div className="text-sm text-gingeralefizz">
                   {product.description}{" "}
                 </div>
-                <button className="cart-button">Add to Cart</button>
               </Link>
+              <AddToCartButton product={product} />
             </div>
           );
         })}
