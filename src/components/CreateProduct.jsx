@@ -59,7 +59,7 @@ export default async function CreateProduct({ shopId }) {
     <div className="overflow-y-scroll overflow-x-hidden max-h-[60vh] px-1">
       <Form.Root action={handleSubmit} className="flex flex-col justify-center">
         <Form.Field name="productName">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Name:</Form.Label>
             <Form.Message match="valueMissing">
               Please enter a Product Name
@@ -74,15 +74,15 @@ export default async function CreateProduct({ shopId }) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="description">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Description</Form.Label>
           </div>
           <Form.Control asChild>
             <textarea className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]" />
           </Form.Control>
         </Form.Field>
-        <Form.Field name="category">
-          <div>
+        {/*  <Form.Field name="category">
+          <div className="flex justify-between">
             <Form.Label>Choose a category for your product</Form.Label>
             <Form.Message match="valueMissing">
               You must choose a category
@@ -99,15 +99,37 @@ export default async function CreateProduct({ shopId }) {
               <option value="goldfish">Goldfish</option>
             </select>
           </Form.Control>
-        </Form.Field>
+        </Form.Field>*/}
         <Form.Field name="price">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Price</Form.Label>
             <Form.Message match="valueMissing">
               You must have a price
             </Form.Message>
-            <Form.Message>Must be less than £1000</Form.Message>
-            <Form.Message>Must be at least £1.00</Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value >= 1000) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be less than £1000
+            </Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value < 1.0) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be at least £1.00
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input
@@ -118,9 +140,20 @@ export default async function CreateProduct({ shopId }) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="shippingCost">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Shipping Cost</Form.Label>
-            <Form.Message>Must be less than £1000</Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value >= 1000) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be less than £1000
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input
@@ -130,16 +163,22 @@ export default async function CreateProduct({ shopId }) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="image">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Image</Form.Label>
+            <Form.Message forceMatch={true}>
+              Image must be less than 5mb
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="image/*" />
           </Form.Control>
         </Form.Field>
         <Form.Field name="glbModel">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product 3d Model</Form.Label>
+            <Form.Message forceMatch={true}>
+              File must be less than 5mb
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="model/gltf-binary, .glb" />
