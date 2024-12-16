@@ -37,7 +37,7 @@ export async function GetShopByUserId(id) {
   return shop;
 }
 
-// Retrieves products associated with a shop from db via  shopId passed as arg
+// Retrieves products associated with a shop from db via shopId passed as arg
 export async function GetShopProducts(shopId) {
   const response = await db.query(
     `SELECT * FROM products WHERE shop_id = ${shopId}`
@@ -50,5 +50,31 @@ export async function GetShopProducts(shopId) {
     return await response.rows[0];
   } else {
     return products;
+  }
+}
+
+// Accepts product ID as argument & returns all product data & associated images
+export async function GetProduct(id) {
+  "use server";
+  const response = await db.query(`SELECT 
+    products.id,
+    products.name,
+    products.description,
+    products.price,
+    products.shipping,
+    products.shop_id,
+    images.url AS image_url
+FROM 
+    products
+LEFT JOIN 
+    images
+ON 
+    products.id = images.products_id
+    WHERE products_id = ${id}`);
+  const product = response.rows[0];
+  if (!product) {
+    return null;
+  } else {
+    return product;
   }
 }
