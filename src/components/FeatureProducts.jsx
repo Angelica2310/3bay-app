@@ -2,6 +2,7 @@ import { db } from "@/utils/db";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import Product from "./Product";
 
 export default async function FeatureProducts() {
   const products = (
@@ -24,7 +25,9 @@ ON
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
       {products.map((product) => {
-        return (
+        return <Product product={product} />;
+        {
+          /* 
           <div key={product.id}>
             <Link
               href={`/products/${product.id}`}
@@ -51,7 +54,8 @@ ON
               <button className="cart-button">Add to Cart</button>
             </Link>
           </div>
-        );
+        );*/
+        }
       })}
     </div>
   );

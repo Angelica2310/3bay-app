@@ -5,48 +5,64 @@ import React from "react";
 import Modelviewer from "./ModelViewer";
 
 export default async function Product({ product }) {
-  const sideLng = 100;
+  const sideLng = 240;
   const modelData = await db.query(
-    "SELECT * FROM images WHERE products_id = $1 AND model = 'true' LIMIT 1",
+    "SELECT * FROM glbs WHERE product_id = $1  LIMIT 1",
     [product.id]
   );
 
   async function altImage() {
     "use server";
-    const altImg = await db.query(
-      "SELECT * FROM images WHERE products_id = $1 AND model = 'false' LIMIT 1",
-      [product.id]
-    );
+    const altImg = (
+      await db.query("SELECT * FROM images WHERE products_id = $1 LIMIT 1", [
+        product.id,
+      ])
+    ).rows[0];
+
     return (
-      <Image
-        alt={img.name}
-        src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${altImg.id}`}
-        width={sideLng}
-        height={sideLng}
-      />
+      <>
+        {altImg.url === null ? (
+          <Image
+            alt={altImg.name}
+            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${altImg.id}`}
+            width={sideLng}
+            height={sideLng}
+            className="rounded-md"
+          />
+        ) : (
+          <div className="relative w-60 h-60">
+            <Image
+              src={altImg.url}
+              alt={altImg.id}
+              fill
+              style={{ objectFit: "cover" }}
+              sizes="25vw"
+              className="absolute rounded-md"
+            />
+          </div>
+        )}
+      </>
     );
   }
 
-  console.log(imgFile);
   return (
-    <Link href={`/products/${product.id}`}>
+    <Link
+      href={`/products/${product.id}`}
+      key={product.id}
+      className="bg-white rounded-lg w-60 h-80"
+    >
       <div id="imageModel">
-        {modelData.rowCount !== 0 ? (
-          <Modelviewer
-            id={modelData.id}
-            className={`w-[${sideLng}px] h-[${sideLng}px]`}
-          />
-        ) : (
-          () => altImage()
-        )}
+        {/*modelData.rowCount !== 0 ? (
+          <Modelviewer id={modelData.id} className="w-60 h-60" />
+        ) : (*/}
+        <div children={altImage()}></div>
       </div>
       <div className="flex justify-between">
-        <p>Product Name{product.name}</p>
-        <div>
-          <p>PRICE{product.price}</p>
-          <p>{product.shipping}</p>
-        </div>
+        <span className="font-medium">{product.name}</span>
+        <span className="font-semibold">£{product.price}</span>
       </div>
+      <div className="text-sm text-gray-500">{product.description}</div>
+      <button className="cart-button">Add to Cart</button>
     </Link>
   );
 }

@@ -2,6 +2,7 @@ import { db } from "@/utils/db";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Product from "@/components/Product";
 Link;
 
 export default async function FeatureProducts() {
@@ -25,8 +26,9 @@ ON
       <h1 className="mt-12 text-2xl">All products</h1>
       <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap ">
         {products.map((product) => {
-          return (
-            <div key={product.id}>
+          return <Product product={product} />;
+          {
+            /*<div key={product.id}>
               <Link
                 href={`/products/${product.id}`}
                 className="w-full flex flex-col gap-4"
@@ -51,8 +53,8 @@ ON
                 </div>
                 <button className="cart-button">Add to Cart</button>
               </Link>
-            </div>
-          );
+            </div>*/
+          }
         })}
       </div>
     </div>
