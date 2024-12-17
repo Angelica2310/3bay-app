@@ -11,7 +11,7 @@ export default function CartModal() {
   // console.log("cartItems", cartItems);
   const { addItemToCart, cart, deleteItemFromCart } = useContext(CartContext);
 
-  const totalPrice = cart?.cartItems.reduce((acc, cartItem) => {
+  const totalPrice = cart?.cartItems?.reduce((acc, cartItem) => {
     return acc + cartItem.price * (cartItem.quantity || 1);
   }, 0);
 
@@ -23,7 +23,7 @@ export default function CartModal() {
         <div>
           <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
           {/* // CART ITEMS */}
-          {cart?.cartItems.map((cartItem, index) => {
+          {cart?.cartItems?.map((cartItem, index) => {
             // console.log("cartItem", cartItem);
             return (
               <div className="flex flex-col gap-8" key={index}>

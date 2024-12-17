@@ -89,4 +89,5 @@ export default async function SingleProductPage({ params }) {
               />
             </div>
           )} */
+
 }
