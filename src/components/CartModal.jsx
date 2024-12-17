@@ -32,8 +32,8 @@ export default function CartModal() {
                   <Image
                     src={cartItem.image}
                     alt={cartItem.name}
-                    width={72}
-                    height={96}
+                    width={64}
+                    height={55}
                     className="object-cover rounded-md"
                   />
                   <div className="flex flex-col justify-between w-full">
