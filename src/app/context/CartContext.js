@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { createContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
@@ -8,7 +8,7 @@ const CartContext = createContext();
 export const CartProductProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const router = useRouter;
+  // const router = useRouter;
 
   useEffect(() => {
     setCartToState();
