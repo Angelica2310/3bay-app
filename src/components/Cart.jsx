@@ -109,10 +109,10 @@ export default function CartModal() {
                 </button>
 
                 <Link
-                  href="/"
+                  href="/products"
                   className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
                 >
-                  Back to shop
+                  Back to products
                 </Link>
               </div>
             </div>

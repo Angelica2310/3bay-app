@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import CartContext from "@/app/context/CartContext";
 import { useContext } from "react";
+import Link from "next/link";
 
 export default function CartModal() {
   const cartItems = true;
@@ -76,9 +77,13 @@ export default function CartModal() {
               Shipping is calculated at checkout
             </p>
             <div className="flex justify-between text-sm">
-              <button className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst">
+              <Link
+                href="/cart"
+                className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst"
+              >
                 View Cart
-              </button>
+              </Link>
+
               <button className="rounded-md py-3 px-4 bg-bratwurst text-white">
                 Checkout
               </button>
