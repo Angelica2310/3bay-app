@@ -3,11 +3,14 @@ import { db } from "@/utils/db";
 
 // Returns user object if user exists, otherwise returns undefined. Optional argument to pass a clerk_id, else it defaults to check currently logged in user.
 export async function GetUser(clerk_id) {
+  "use server";
   const id = clerk_id || (await auth()).userId;
-  const response = await db.query(`SELECT * FROM users WHERE clerk_id = $1`, [
-    id,
-  ]);
-  const result = await response.rows[0];
+  let response = "";
+  let result = "";
+  if (id) {
+    response = await db.query(`SELECT * FROM users WHERE clerk_id = $1`, [id]);
+    result = await response.rows[0];
+  }
 
   return result;
 }
@@ -37,7 +40,13 @@ export async function GetShopByUserId(id) {
   return shop;
 }
 
-// Retrieves products associated with a shop from db via  shopId passed as arg
+export async function GetShopById(id) {
+  const response = await db.query(`SELECT * FROM shops WHERE id = ${id}`);
+  const shop = await response.rows[0];
+  return shop;
+}
+
+// Retrieves products associated with a shop from db via shopId passed as arg
 export async function GetShopProducts(shopId) {
   const response = await db.query(
     `SELECT * FROM products WHERE shop_id = ${shopId}`
@@ -50,5 +59,31 @@ export async function GetShopProducts(shopId) {
     return await response.rows[0];
   } else {
     return products;
+  }
+}
+
+// Accepts product ID as argument & returns all product data & associated images
+export async function GetProduct(prodId) {
+  "use server";
+  const response = await db.query(`SELECT 
+    products.id,
+    products.name,
+    products.description,
+    products.price,
+    products.shipping,
+    products.shop_id,
+    images.url AS image_url
+FROM 
+    products
+LEFT JOIN 
+    images
+ON 
+    products.id = images.products_id
+    WHERE products_id = ${prodId}`);
+  const product = response.rows[0];
+  if (!product) {
+    return null;
+  } else {
+    return product;
   }
 }
