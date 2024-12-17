@@ -6,7 +6,7 @@ import { GlobalProvider } from "./GlobalProvider";
 export const metadata = {
   title: "3Bay",
   description: "3D product marketplace",
-  icons: "logo.png",
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }) {
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       }}
     >
       <html lang="en">
-        <body className="h-screen w-screen flex flex-col">
+        <body className="h-screen w-screen flex flex-col overflow-x-hidden">
           <GlobalProvider>
             <NavBar />
             {children}

@@ -2,22 +2,39 @@ import { GetShopProducts } from "@/utils/actions";
 import * as Dialog from "@radix-ui/react-dialog";
 import AddProductBtn from "./AddProductBtn";
 import Product from "./Product";
+import { UserButton } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default async function ShopDisplay({ shop, ownShop }) {
   const products = await GetShopProducts(shop.id);
 
   return (
-    <div className="flex flex-col h-full w-full mx-6">
-      <div className="my-10 flex flex-col items-center">
-        <h2 className="text-4xl">{shop.name}</h2>
-        <p className="pt-2 text-xl">{shop.description}</p>
-        {ownShop && <AddProductBtn shopId={shop.id} />}
+    <div className="flex flex-col h-full w-full mx-6 items-center">
+      <h3 className="mt-10 bg-gingeralefizz px-6 py-2 rounded-t-3xl text-2xl pb-1 font-bold">
+        My Shop
+      </h3>
+      <div className="mb-10 flex flex-col items-center w-4/5 bg-gingeralefizz py-4 px-4 rounded-3xl">
+        <h2 className="mt-2 text-3xl sm:text-4xl font-semibold text-center">
+          {shop.name}
+        </h2>
+        <p className="py-4 text-xl text-justify">{shop.description}</p>
+        <div className="flex flex-col sm:flex-row mt-2 mb-4">
+          {ownShop && <AddProductBtn shopId={shop.id} />}
+          {ownShop && (
+            <Link
+              href="/store/edit"
+              className="py-1 px-3 mt-6 sm:mt-0 sm:ml-10 text-lg rounded-xl bg-prismarine font-semibold text-white shadow-[0_2px_10px] shadow-black hover:bg-benihired hover:text-white focus:shadow-[0_0_0_2px] focus:shadow-black focus:outline-none text-center"
+            >
+              Edit Shop
+            </Link>
+          )}
+        </div>
       </div>
       {/* Render this if no products associated with shop  */}
       {!products ? (
         <p>No products yet...</p>
       ) : (
-        <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+        <div className="mt-12 mb-6 flex flex-col items-center md:flex-row gap-x-8 gap-y-16 justify-between flex-wrap">
           {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray-600 py-4 my-20 text-white rounded-2xl"*/}
           {!products[1] ? (
             <Product product={products} />
