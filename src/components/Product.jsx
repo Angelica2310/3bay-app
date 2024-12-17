@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import Modelviewer from "./ModelViewer";
+import AddToCartButton from "./AddToCartButton";
 
 export default async function Product({ product, ownShop }) {
   const sideLng = 240;
@@ -46,29 +47,30 @@ export default async function Product({ product, ownShop }) {
   }
 
   return (
-    <Link
-      href={`/products/${product.id}`}
-      key={product.id}
-      className="bg-white rounded-lg w-60 h-80"
-    >
-      <div id="imageModel">
-        {/*modelData.rowCount !== 0 ? (
+    <div>
+      <Link
+        href={`/products/${product.id}`}
+        key={product.id}
+        className="bg-white rounded-lg w-60 h-80"
+      >
+        <div id="imageModel">
+          {/*modelData.rowCount !== 0 ? (
           <Modelviewer id={modelData.id} className="w-60 h-60" />
         ) : (*/}
-        <div children={altImage()}></div>
-      </div>
-      <div className="flex justify-between">
-        <span className="font-medium">{product.name}</span>
-        <span className="font-semibold">£{product.price}</span>
-      </div>
-      <div className="text-sm text-gray-500">{product.description}</div>
+          <div children={altImage()}></div>
+        </div>
+        <div className="flex justify-between">
+          <span className="font-medium">{product.name}</span>
+          <span className="font-semibold">£{product.price}</span>
+        </div>
+        <div className="text-sm text-gray-500">{product.description}</div>
+      </Link>
       {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
       {ownShop ? (
         <button className="cart-button">Edit Product</button>
       ) : (
-        <button className="cart-button">Add to Cart</button>
+        <AddToCartButton product={product} />
       )}
-      {/* <button className="cart-button">Add to Cart</button> */}
-    </Link>
+    </div>
   );
 }

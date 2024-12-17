@@ -6,12 +6,16 @@ import { useContext } from "react";
 export default function addToCartButton({ product }) {
   const { addItemToCart } = useContext(CartContext);
 
+  // console.log("product", product);
+
   const addToCartHandler = () => {
     addItemToCart({
       product: product.id,
       name: product.name,
       price: product.price,
       image: product.images_url,
+      description: product.description,
+      shipping: product.shipping,
     });
   };
   //   console.log("---show product---", product);
