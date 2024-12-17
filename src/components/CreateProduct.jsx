@@ -130,6 +130,19 @@ export default async function CreateProduct({ shopId }) {
             >
               Must be at least £1.00
             </Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                const regex = /^(?:\d{1,3}|£(\d{1,3})).\d{2}$/g;
+                if (value.match(regex)) {
+                  return false;
+                } else {
+                  return true;
+                }
+              }}
+            >
+              Values must be in the format £00.00 or 00.00
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input
@@ -145,6 +158,19 @@ export default async function CreateProduct({ shopId }) {
             <Form.Message
               match={async (value) => {
                 "use server";
+                const regex = /^(?:\d{0,2}|£(\d{0,2})).\d{2}$/g;
+                if (value.match(regex)) {
+                  return false;
+                } else {
+                  return true;
+                }
+              }}
+            >
+              Values must be in the format £00.00 or 00.00
+            </Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
                 if (value >= 1000) {
                   return true;
                 } else {
@@ -152,7 +178,7 @@ export default async function CreateProduct({ shopId }) {
                 }
               }}
             >
-              Must be less than £1000
+              Must be less than £100
             </Form.Message>
           </div>
           <Form.Control asChild>
@@ -165,9 +191,7 @@ export default async function CreateProduct({ shopId }) {
         <Form.Field name="image">
           <div className="flex justify-between">
             <Form.Label>Product Image</Form.Label>
-            <Form.Message forceMatch={true}>
-              Image must be less than 5mb
-            </Form.Message>
+            <Form.Message forceMatch>Image must be less than 5mb</Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="image/*" />
@@ -176,9 +200,7 @@ export default async function CreateProduct({ shopId }) {
         <Form.Field name="glbModel">
           <div className="flex justify-between">
             <Form.Label>Product 3d Model</Form.Label>
-            <Form.Message forceMatch={true}>
-              File must be less than 5mb
-            </Form.Message>
+            <Form.Message forceMatch>File must be less than 5mb</Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="model/gltf-binary, .glb" />

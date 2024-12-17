@@ -3,7 +3,7 @@
 import CartContext from "@/app/context/CartContext";
 import { useContext } from "react";
 
-export default function addToCartButton({ product }) {
+export default function AddToCartButton({ product }) {
   const { addItemToCart } = useContext(CartContext);
 
   // console.log("product", product);

@@ -35,7 +35,6 @@ body {
 .page-placement-style {
   @apply bg-prismarine flex items-center justify-center h-screen;
 }
-
 /* FORM STYLE */
 .form-border-style {
   @apply flex flex-col items-center space-y-2 bg-gingeralefizz p-8 max-w-2xl rounded-md shadow-lg;
@@ -59,7 +58,7 @@ body {
 }
 
 .submit-style {
-  @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-pink-600 hover:scale-105 transition;
+  @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-bratwurst hover:scale-105 transition;
 }
 
 .button-style {
@@ -68,8 +67,12 @@ body {
 
 /* HEADER AND FOOTER STYLE */
 .header {
-  @apply bg-bratwurst text-white h-16 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
+  @apply bg-bratwurst text-white h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
 }
 .footer {
+
   @apply py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 text-sm mt-24 bg-bratwurst text-white;
+
+  @apply py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 text-sm mt-24 bg-bratwurst  text-white;
+
 }
