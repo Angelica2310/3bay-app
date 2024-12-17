@@ -1,10 +1,6 @@
-import CartModal from "@/components/CartModal";
+import Cart from "@/components/Cart";
 import React from "react";
 
 export default function CartPage() {
-  return (
-    <div>
-      <CartModal />
-    </div>
-  );
+  return <Cart />;
 }

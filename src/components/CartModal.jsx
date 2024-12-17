@@ -11,6 +11,10 @@ export default function CartModal() {
   // console.log("cartItems", cartItems);
   const { addItemToCart, cart, deleteItemFromCart } = useContext(CartContext);
 
+  const totalPrice = cart?.cartItems.reduce((acc, cartItem) => {
+    return acc + cartItem.price * (cartItem.quantity || 1);
+  }, 0);
+
   return (
     <div className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20">
       {!cartItems ? (
@@ -63,11 +67,11 @@ export default function CartModal() {
           {/* // BOTTOM */}
           <div>
             <div className="flex items-center justify-between font-semibold text-bratwurst">
-              <span>Subtotal</span>
-              <span>£20</span>
+              <span>Subtotal: </span>
+              <span>£{totalPrice}</span>
             </div>
             <p className="text-sm mt-2 text-gray-500 mb-4">
-              Shipping and taxes calculated at checkout
+              Shipping is calculated at checkout
             </p>
             <div className="flex justify-between text-sm">
               <button className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst">
