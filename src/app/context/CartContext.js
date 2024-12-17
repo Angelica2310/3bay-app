@@ -49,7 +49,7 @@ export const CartProductProvider = ({ children }) => {
     } else {
       newCartItems = [...(cart?.cartItems || []), item];
     }
-    console.log("newCartItems", newCartItems);
+    // console.log("newCartItems", newCartItems);
     localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
     setCartToState();
   };

@@ -20,49 +20,52 @@ export default function CartModal() {
       {!cartItems ? (
         <div>Cart is empty</div>
       ) : (
-        <>
+        <div>
           <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
           {/* // CART ITEMS */}
-          {cart?.cartItems.map((cartItem) => (
-            <div className="flex flex-col gap-8">
-              {/* ITEM */}
-              <div className="flex gap-4">
-                <Image
-                  src={cartItem.image}
-                  alt={cartItem.name}
-                  width={72}
-                  height={96}
-                  className="object-cover rounded-md"
-                />
-                <div className="flex flex-col justify-between w-full">
-                  {/* TOP */}
-                  <div>
-                    {/* TITLE */}
-                    <div className="flex items-center justify-between gap-8">
-                      <h3 className="font-semibold text-bratwurst">
-                        {cartItem.name}
-                      </h3>
-                      <div className="p-1 text-bratwurst rounded-sm flex items-center gap-2">
-                        £{cartItem.price}
+          {cart?.cartItems.map((cartItem, index) => {
+            // console.log("cartItem", cartItem);
+            return (
+              <div className="flex flex-col gap-8" key={index}>
+                {/* ITEM */}
+                <div className="flex gap-4">
+                  <Image
+                    src={cartItem.image}
+                    alt={cartItem.name}
+                    width={72}
+                    height={96}
+                    className="object-cover rounded-md"
+                  />
+                  <div className="flex flex-col justify-between w-full">
+                    {/* TOP */}
+                    <div>
+                      {/* TITLE */}
+                      <div className="flex items-center justify-between gap-8">
+                        <h3 className="font-semibold text-bratwurst">
+                          {cartItem.name}
+                        </h3>
+                        <div className="p-1 text-bratwurst rounded-sm flex items-center gap-2">
+                          £{cartItem.price}
+                        </div>
                       </div>
+                      {/* DESC */}
+                      <div className="text-sm text-gray-500">available</div>
                     </div>
-                    {/* DESC */}
-                    <div className="text-sm text-gray-500">available</div>
-                  </div>
-                  {/* BOTTOM */}
-                  <div className="flex justify-between text-sm">
-                    {/* <span className="text-gray-500">Qty: 1</span> */}
-                    <button
-                      className="text-blue-500"
-                      onClick={() => deleteItemFromCart(cartItem?.product)}
-                    >
-                      remove
-                    </button>
+                    {/* BOTTOM */}
+                    <div className="flex justify-between text-sm">
+                      {/* <span className="text-gray-500">Qty: 1</span> */}
+                      <button
+                        className="text-blue-500"
+                        onClick={() => deleteItemFromCart(cartItem?.product)}
+                      >
+                        remove
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
 
           {/* // BOTTOM */}
           <div>
@@ -82,7 +85,7 @@ export default function CartModal() {
               </button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
