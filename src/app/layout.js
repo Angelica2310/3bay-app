@@ -5,7 +5,7 @@ import NavBar from "@/components/NavBar";
 export const metadata = {
   title: "3Bay",
   description: "3D product marketplace",
-  icons: "logo.png",
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }) {
