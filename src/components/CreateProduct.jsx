@@ -1,14 +1,14 @@
 import React from "react";
 import * as Form from "@radix-ui/react-form";
+
 import { db } from "@/utils/db";
-import { GetUser } from "@/utils/actions";
+
 import { revalidatePath } from "next/cache";
 
-export default async function CreateProduct(shopId) {
+export default async function CreateProduct({ shopId }) {
   //shop_id in props
   async function handleSubmit(formData) {
     "use server";
-    const userId = GetUser();
 
     const productName = formData.get("productName");
     const description = formData.get("description");
@@ -17,33 +17,36 @@ export default async function CreateProduct(shopId) {
     const shippingCost = formData.get("shippingCost");
     const image = formData.get("image");
     const glbModel = formData.get("glbModel");
-    console.log(productName, price, description);
+    console.log(productName, price, description, shopId);
     const id = (
       await db.query(
-        "INSERT INTO products (name, description, price, shipping, shop_id) VALUES ($1,$2,$3,$4,(SELECT id FROM shops WHERE user_id = $5)) RETURNING id",
-        [productName, description, price, shippingCost, userId]
+        "INSERT INTO products (name, description, price, shipping, shop_id) VALUES ($1,$2,$3,$4, $5) RETURNING id",
+        [productName, description, price, shippingCost, shopId]
       )
-    ).rows; //NEED TO ADD SO MANY CHECKS FOR IF MODEL IS GLB AND STUFF ALTHOUGH INPUT SHOULD HAVE CONSIDERED THAT ALSO NEED CORRECT ERROR MESSAGING FOR FILE SIZE
+    ).rows[0].id;
+    console.log(id);
+    //NEED TO ADD SO MANY CHECKS FOR IF MODEL IS GLB AND STUFF ALTHOUGH INPUT SHOULD HAVE CONSIDERED THAT ALSO NEED CORRECT ERROR MESSAGING FOR FILE SIZE
     const imgId = (
       await db.query(
-        "INSERT INTO images (products_id, name, model) VALUES ($1,$2) RETURNING id",
+        "INSERT INTO images (products_id, name) VALUES ($1,$2) RETURNING id",
         [id, image.name]
       )
-    ).rows;
+    ).rows[0].id;
     const glbId = (
       await db.query(
         "INSERT INTO glbs (product_id, name) VALUES ($1,$2) RETURNING id",
         [id, glbModel.name]
       )
-    ).rows;
+    ).rows[0].id;
+    console.log("global " + glbId, "imag " + imgId);
     await fetch(
       //3bay-files should be an ENV VARIABLE
-      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${imgId[0]}`,
+      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${imgId}`,
       { method: "PUT", body: image, headers: { "Content-Type": image.type } }
     );
     await fetch(
       //3bay-files should be an ENV VARIABLE
-      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${glbId[0]}`,
+      `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${glbId}`,
       {
         method: "PUT",
         body: glbModel,
@@ -53,11 +56,10 @@ export default async function CreateProduct(shopId) {
     revalidatePath(`/store/${shopId}`);
   }
   return (
-    <div className="w-2/5 mx-auto p-4 border-2 border-black rounded-2xl bg-slate-200">
-      <h1 className="text-center font-semibold text-xl">Create/edit product</h1>
+    <div className="overflow-y-scroll overflow-x-hidden max-h-[60vh] px-1">
       <Form.Root action={handleSubmit} className="flex flex-col justify-center">
         <Form.Field name="productName">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Name:</Form.Label>
             <Form.Message match="valueMissing">
               Please enter a Product Name
@@ -72,15 +74,15 @@ export default async function CreateProduct(shopId) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="description">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Description</Form.Label>
           </div>
           <Form.Control asChild>
             <textarea className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]" />
           </Form.Control>
         </Form.Field>
-        <Form.Field name="category">
-          <div>
+        {/*  <Form.Field name="category">
+          <div className="flex justify-between">
             <Form.Label>Choose a category for your product</Form.Label>
             <Form.Message match="valueMissing">
               You must choose a category
@@ -97,15 +99,37 @@ export default async function CreateProduct(shopId) {
               <option value="goldfish">Goldfish</option>
             </select>
           </Form.Control>
-        </Form.Field>
+        </Form.Field>*/}
         <Form.Field name="price">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Price</Form.Label>
             <Form.Message match="valueMissing">
               You must have a price
             </Form.Message>
-            <Form.Message>Must be less than £1000</Form.Message>
-            <Form.Message>Must be at least £1.00</Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value >= 1000) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be less than £1000
+            </Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value < 1.0) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be at least £1.00
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input
@@ -116,9 +140,20 @@ export default async function CreateProduct(shopId) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="shippingCost">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Shipping Cost</Form.Label>
-            <Form.Message>Must be less than £1000</Form.Message>
+            <Form.Message
+              match={async (value) => {
+                "use server";
+                if (value >= 1000) {
+                  return true;
+                } else {
+                  return false;
+                }
+              }}
+            >
+              Must be less than £1000
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input
@@ -128,16 +163,22 @@ export default async function CreateProduct(shopId) {
           </Form.Control>
         </Form.Field>
         <Form.Field name="image">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product Image</Form.Label>
+            <Form.Message forceMatch={true}>
+              Image must be less than 5mb
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="image/*" />
           </Form.Control>
         </Form.Field>
         <Form.Field name="glbModel">
-          <div>
+          <div className="flex justify-between">
             <Form.Label>Product 3d Model</Form.Label>
+            <Form.Message forceMatch={true}>
+              File must be less than 5mb
+            </Form.Message>
           </div>
           <Form.Control asChild>
             <input type="file" accept="model/gltf-binary, .glb" />

@@ -1,8 +1,13 @@
 import { db } from "@/utils/db";
 import Image from "next/image";
 import Link from "next/link";
+
 import CartModal from "@/components/CartModal";
 import AddToCartButton from "@/components/AddToCartButton";
+
+import Product from "@/components/Product";
+Link;
+
 
 export default async function FeatureProducts() {
   const products = (
@@ -25,8 +30,9 @@ ON
       <h1 className="mt-12 text-2xl">All products</h1>
       <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap ">
         {products.map((product) => {
-          return (
-            <div key={product.id}>
+          return <Product product={product} key={product.id} />;
+          {
+            /*<div key={product.id}>
               <Link
                 href={`/products/${product.id}`}
                 className="w-full flex flex-col gap-4"
@@ -50,9 +56,14 @@ ON
                   {product.description}{" "}
                 </div>
               </Link>
+
               <AddToCartButton product={product} />
             </div>
           );
+
+            </div>*/
+          }
+
         })}
       </div>
     </div>
