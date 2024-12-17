@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       }}
     >
       <html lang="en">
-        <body className="h-screen w-screen flex flex-col">
+        <body className="h-screen w-screen flex flex-col overflow-x-hidden">
           <GlobalProvider>
             <NavBar />
             {children}

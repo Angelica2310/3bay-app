@@ -29,8 +29,10 @@ export async function CheckForUser() {
       `INSERT INTO users (username, email, image_url, clerk_id) VALUES ($1, $2, $3, $4)`,
       [username, email, image, id]
     );
+    return user;
+  } else if (exists) {
+    return exists;
   }
-  return user;
 }
 
 // Retrieves shop from db via a userId passed as arg
