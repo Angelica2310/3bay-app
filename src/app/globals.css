@@ -35,7 +35,6 @@ body {
 .page-placement-style {
   @apply bg-prismarine flex items-center justify-center h-screen;
 }
-
 /* FORM STYLE */
 .form-border-style {
   @apply flex flex-col items-center space-y-2 bg-gingeralefizz p-8 max-w-2xl rounded-md shadow-lg;
@@ -68,7 +67,7 @@ body {
 
 /* HEADER AND FOOTER STYLE */
 .header {
-  @apply bg-bratwurst text-white h-16 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
+  @apply bg-bratwurst text-white h-20 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative;
 }
 .footer {
   @apply py-24 px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 text-sm mt-24 bg-bratwurst  text-white;

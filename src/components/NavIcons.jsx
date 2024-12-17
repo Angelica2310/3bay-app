@@ -28,7 +28,7 @@ export default function NavIcons() {
       </SignedIn>
       <div className="relative cursor-pointer">
         <ShoppingCart onClick={() => setCartOpen((prev) => !prev)} />
-        <div className="absolute -top-4 -right-4 w-6 h-6 bg-red-500 rounded-full text-white text-sm flex items-center justify-center">
+        <div className="absolute -top-2.5 -right-3.5 w-[22px] h-[22px] bg-red-500 rounded-full text-white text-sm flex items-center justify-center">
           {cartItems?.length || 0}
         </div>
       </div>

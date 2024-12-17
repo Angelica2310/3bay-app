@@ -26,8 +26,9 @@ export default function NavBar() {
           </Link>
           <div className="hidden xl:flex gap-4">
             <Link href="/">Homepage</Link>
-            <Link href="/products">Products</Link>
-            <Link href="/stores">Stores</Link>
+            <Link href="/browse">Browse</Link>
+            {/*<Link href="/products">Products</Link>
+            <Link href="/stores">Stores</Link>*/}
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </div>
