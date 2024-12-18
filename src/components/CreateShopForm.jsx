@@ -149,9 +149,15 @@ export default function CreateShopForm({ shop }) {
               defaultValue={shop && shop.theme}
               required
             >
-              <option value="default">Default Theme</option>
-              <option value="dark">Dark Theme</option>
-              <option value="bold">Bold Colour Theme</option>
+              <option value="theme1">Default Theme</option>
+              <option value="theme2">Red Theme</option>
+              <option value="theme3">Yellow Theme</option>
+              <option value="theme4">Pink Theme</option>
+              <option value="theme5">Green Theme</option>
+              <option value="theme6">Purple Theme</option>
+              <option value="theme7">Blue Theme</option>
+              <option value="theme8">Cream Theme</option>
+              <option value="theme9">Grey Scale Theme</option>
             </select>
           </Form.Control>
         </Form.Field>

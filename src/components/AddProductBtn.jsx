@@ -21,13 +21,13 @@ export default function AddProductBtn({ shopId, productId, edit }) {
           <Dialog.Title className="m-0 text-[17px] font-medium text-mauve12">
             {productId ? <span>Edit Product</span> : <span>Add Product</span>}
           </Dialog.Title>
-          <Dialog.Description className="mb-5 mt-2.5 text-[15px] leading-normal text-mauve11">
+          <Dialog.Description className=" mb-5 mt-2.5 text-[15px] leading-normal text-mauve11">
             Give the details for your product here. Click save when you're done.
           </Dialog.Description>
           <CreateProduct shopId={shopId} productId={productId} />
           <Dialog.Close asChild>
             <button
-              className="absolute right-2.5 top-2.5 inline-flex size-[25px] appearance-none items-center justify-center rounded-full text-violet11 hover:bg-violet4 focus:shadow-[0_0_0_2px] focus:shadow-violet7 focus:outline-none"
+              className="   absolute right-2.5 top-2.5 inline-flex size-[25px] appearance-none items-center justify-center rounded-full text-violet11 hover:bg-violet4 focus:shadow-[0_0_0_2px] focus:shadow-violet7 focus:outline-none"
               aria-label="Close"
             >
               x
