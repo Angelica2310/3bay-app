@@ -3,12 +3,23 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-
 import AddProductBtn from "@/components/AddProductBtn";
 import { GetUser } from "@/utils/actions";
-
 import AddToCartButton from "@/components/AddToCartButton";
+import { db } from "@/utils/db";
 
+export async function generateMetadata({ params, searchParams }, parent) {
+  const id = (await params).id;
+
+  const product = (await db.query(`SELECT * FROM products WHERE id = ${id}`))
+    .rows[0];
+
+  // console.log("id: ", id);
+  return {
+    title: `${product.name} | Details`,
+    description: `More about ${product.name}`,
+  };
+}
 
 export default async function SingleProductPage({ params, searchParams }) {
   const prodId = (await params).id;
@@ -71,7 +82,6 @@ export default async function SingleProductPage({ params, searchParams }) {
           </div>
           {/* <div className="flex mt-6 mx-1"></div> */}
           <div className="mt-10 lg:mt-14 xl:mt-18 flex justify-center sm:justify-start sm:pl-6">
-
             {ownProduct ? (
               <AddProductBtn
                 shopId={product.shop_id}
@@ -79,13 +89,10 @@ export default async function SingleProductPage({ params, searchParams }) {
                 edit={edit}
               />
             ) : (
-                
-
-            <div className="">
-              <AddToCartButton product={product} />
-            </div>
+              <div className="">
+                <AddToCartButton product={product} />
+              </div>
             )}
-
           </div>
         </div>
       </div>

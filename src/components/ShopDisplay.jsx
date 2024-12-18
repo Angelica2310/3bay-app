@@ -9,7 +9,7 @@ export default async function ShopDisplay({ shop, ownShop }) {
   const products = await GetShopProducts(shop.id);
 
   return (
-    <div className="flex flex-col h-full w-full mx-6 items-center">
+    <div className="flex flex-col h-full w-full items-center">
       <h3 className="mt-10 bg-gingeralefizz px-6 py-2 rounded-t-3xl text-2xl pb-1 font-bold">
         My Shop
       </h3>
