@@ -80,5 +80,6 @@ export default async function Product({ product, ownShop }) {
 
        
     </div>
+  </div>
   );
 }
