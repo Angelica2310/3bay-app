@@ -2,34 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* BRAND COLOURS */
-:root {
-  --prismarine: #127475; /* Primary background, base layer, secondary text.  Header */
-  --stormygreen: #0e9594; /* Alternative background, base layer, secondary text. Header or footer. Product card boarder */
-  --gingeralefizz: #f5dfbb; /* Product card neutral background.  Text and Icons */
-  --benihired: #f2542d; /* Accent colour = Call to action button.  Highlight text. Button base layer, links, highlighted pricing*/
-  --bratwurst: #562c2c; /* Accent colour = Text accents.  Primary text against ginger-ale pale background. Button hover. Footer*/
-  --white: #ffffff; /* contrast text */
+@layer utilities {
+  .bg-prismarine {
+    background-color: #127475;
+  }
+  .bg-stormygreen {
+    background-color: #0e9594;
+  }
+  .bg-gingeralefizz {
+    background-color: #f5dfbb;
+  }
+  .bg-benihired {
+    background-color: #f2542d;
+  }
+  .bg-bratwurst {
+    background-color: #562c2c;
+  }
+  .bg-white {
+    background-color: #ffffff;
+  }
 }
 
-/* color switch TEST */
-.theme-winter {
-  --bg-color: #6a050c;
-  --text-color: #e9e4dc;
-  --accent-color: #07440c;
-}
-.theme-spring {
-  --bg-color: #d9ec8a;
-  --text-color: #1a0548;
-  --accent-color: #c67511;
+/*BRAND COLOURS */
+:root {
+  --prismarine: #127475;
+  --stormygreen: #0e9594;
+  --gingeralefizz: #f5dfbb;
+  --benihired: #f2542d;
+  --bratwurst: #562c2c;
+  --white: #ffffff;
 }
 
 body {
   background: var(--stormygreen);
   font-family: Arial, Helvetica, sans-serif;
 }
-
-/* BODY STYLE */
 
 /* PAGE PLACEMENT */
 .page-placement-style {
@@ -40,7 +47,7 @@ body {
   @apply flex flex-col items-center space-y-2 bg-gingeralefizz p-8 max-w-2xl rounded-md shadow-lg;
 }
 .input-style {
-  @apply text-black px-3 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-benihired;
+  @apply text-black px-3 py-2  border rounded-lg focus:outline-none focus:ring-2;
 }
 
 .cart-button {
