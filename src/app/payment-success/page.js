@@ -1,5 +1,5 @@
-export default function PaymentSuccess({ searchParams }) {
-  const { totalAmount } = searchParams;
+export default async function PaymentSuccess({ searchParams }) {
+  const { totalAmount } = await searchParams;
   return (
     <main className="max-w-6xl mx-auto p-10 text-white text-center border m-10 rounded-md bg-bratwurst">
       <div className="mb-10">
