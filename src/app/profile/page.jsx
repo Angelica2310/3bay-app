@@ -3,7 +3,6 @@
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/utils/db";
 import BuyerProfile from "@/components/BuyerProfile";
-import SellerProfile from "@/components/SellerProfile";
 import { CheckForUser } from "@/utils/actions";
 
 export default async function ProfilePage() {
@@ -24,11 +23,10 @@ export default async function ProfilePage() {
 
   // get the result
   const user = response.rows[0];
-  // identify if user is seller (on shop_id)
-  const userIsSeller = user && user.shop_id;
 
-  // show the relevant component
-  // if user is seller = SellerProfile, otherwise show BuyerProfile
-
-  return <div>{userIsSeller ? <SellerProfile /> : <BuyerProfile />}</div>;
+  return (
+    <div>
+      <BuyerProfile user={user} />
+    </div>
+  );
 }
