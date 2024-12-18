@@ -1,11 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import React from "react";
 import CartContext from "@/app/context/CartContext";
 import { useContext } from "react";
-import CheckUser from "./CheckUser";
-import { Link } from "lucide-react";
 import CartItems from "./CartItems";
 
 export default function CartModal() {
