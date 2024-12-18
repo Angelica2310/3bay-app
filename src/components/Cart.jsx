@@ -11,7 +11,7 @@ export default function CartModal() {
 
   const { addItemToCart, cart, deleteItemFromCart } = useContext(CartContext);
 
-  // console.log("cart", cart);
+  console.log("cart", cart);
 
   const totalPriceWithoutShipping = cart?.cartItems?.reduce((acc, cartItem) => {
     return acc + cartItem.price * (cartItem.quantity || 1);
