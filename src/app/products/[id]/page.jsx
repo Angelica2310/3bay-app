@@ -3,8 +3,12 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
 import AddProductBtn from "@/components/AddProductBtn";
 import { GetUser } from "@/utils/actions";
+
+import AddToCartButton from "@/components/AddToCartButton";
+
 
 export default async function SingleProductPage({ params, searchParams }) {
   const prodId = (await params).id;
@@ -67,6 +71,7 @@ export default async function SingleProductPage({ params, searchParams }) {
           </div>
           {/* <div className="flex mt-6 mx-1"></div> */}
           <div className="mt-10 lg:mt-14 xl:mt-18 flex justify-center sm:justify-start sm:pl-6">
+
             {ownProduct ? (
               <AddProductBtn
                 shopId={product.shop_id}
@@ -74,13 +79,13 @@ export default async function SingleProductPage({ params, searchParams }) {
                 edit={edit}
               />
             ) : (
-              <Link
-                href="/"
-                className="bg-gingeralefizz py-1 px-2 sm:text-xl xl:text-2xl rounded-lg sm:rounded-xl font-semibold hover:bg-benihired hover:text-white"
-              >
-                Add To Basket
-              </Link>
+                
+
+            <div className="">
+              <AddToCartButton product={product} />
+            </div>
             )}
+
           </div>
         </div>
       </div>

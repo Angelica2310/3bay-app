@@ -27,6 +27,9 @@ export const CartProductProvider = ({ children }) => {
     name,
     price,
     image,
+    description,
+    shipping,
+
     // quantity = 1,
   }) => {
     const item = {
@@ -34,8 +37,10 @@ export const CartProductProvider = ({ children }) => {
       name,
       price,
       image,
+      description,
+      shipping,
     };
-    // console.log("item", item);
+
     const isItemExist = cart?.cartItems?.find(
       (i) => i.product === item.product
     );
