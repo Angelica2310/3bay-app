@@ -1,14 +1,33 @@
-import { GetProduct } from "@/utils/actions";
+import { GetProduct, GetShopByUserId } from "@/utils/actions";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import AddProductBtn from "@/components/AddProductBtn";
+import { GetUser } from "@/utils/actions";
+
 import AddToCartButton from "@/components/AddToCartButton";
 
-export default async function SingleProductPage({ params }) {
+
+export default async function SingleProductPage({ params, searchParams }) {
   const prodId = (await params).id;
   const product = await GetProduct(prodId);
+  const editParam = await searchParams;
+  const edit = await editParam.edit;
+  const user = await GetUser();
+  let ownProduct = false;
 
+  if (user) {
+    const shop = await GetShopByUserId(user.id);
+    if (shop) {
+      if (product.shop_id == shop.id) {
+        ownProduct = true;
+      }
+    }
+  }
+
+  // Need to figure out how to use the edit search param to cause the add product btn to render and show automatically
   if (!product) {
     redirect("/products");
   }
@@ -52,9 +71,21 @@ export default async function SingleProductPage({ params }) {
           </div>
           {/* <div className="flex mt-6 mx-1"></div> */}
           <div className="mt-10 lg:mt-14 xl:mt-18 flex justify-center sm:justify-start sm:pl-6">
+
+            {ownProduct ? (
+              <AddProductBtn
+                shopId={product.shop_id}
+                productId={product.id}
+                edit={edit}
+              />
+            ) : (
+                
+
             <div className="">
               <AddToCartButton product={product} />
             </div>
+            )}
+
           </div>
         </div>
       </div>

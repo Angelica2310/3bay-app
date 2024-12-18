@@ -6,19 +6,15 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
     <div>
       <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
       {/* // CART ITEMS */}
-      {cart?.cartItems.map((cartItem, index) => {
+      {cart?.cartItems.map((cartItem) => {
         // console.log("cartItem", cartItem);
         return (
           <div className="flex flex-col gap-8" key={`cart-${cartItem.name}`}>
             {/* ITEM */}
             <div className="flex gap-4">
-              <Image
-                src={cartItem.image}
-                alt={cartItem.name}
-                width={64}
-                height={55}
-                className="object-cover rounded-md"
-              />
+              <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
+                <img src={cartItem.image} alt={cartItem.name} />
+              </div>
               <div className="flex flex-col justify-between w-full">
                 {/* TOP */}
                 <div>
@@ -32,10 +28,10 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
                     </div>
                   </div>
                   {/* DESC */}
-                  <div className="text-sm text-gray-500">available</div>
+                  <div className="text-xs text-gray-500">available</div>
                 </div>
                 {/* BOTTOM */}
-                <div className="flex justify-between text-sm">
+                <div className="flex justify-between text-xs">
                   {/* <span className="text-gray-500">Qty: 1</span> */}
                   <button
                     className="text-blue-500"
@@ -52,16 +48,16 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
 
       {/* // BOTTOM */}
       <div>
-        <div className="flex items-center justify-between font-semibold text-bratwurst">
+        <div className="flex items-center justify-between font-semibold text-bratwurst ">
           <span>Subtotal: </span>
-          <span>£{totalPrice}</span>
+          <span>£{(totalPrice || 0).toFixed(2)}</span>
         </div>
         <p className="text-sm mt-2 text-gray-500 mb-4">
           Shipping is calculated at checkout
         </p>
         <Link
           href="/cart"
-          className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst"
+          className="rounded-md py-3 px-4 ring-1 ring-bratwurst text-bratwurst "
         >
           View Cart
         </Link>

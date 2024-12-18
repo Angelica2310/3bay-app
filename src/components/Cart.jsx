@@ -5,13 +5,14 @@ import React from "react";
 import CartContext from "@/app/context/CartContext";
 import { useContext } from "react";
 import Link from "next/link";
+// import CheckUser from "./CheckUser";
 
-export default function CartModal() {
+export default function Cart({ children }) {
   const cartItems = true;
 
   const { addItemToCart, cart, deleteItemFromCart } = useContext(CartContext);
 
-  console.log("cart", cart);
+  // console.log("cart", cart);
 
   const totalPriceWithoutShipping = cart?.cartItems?.reduce((acc, cartItem) => {
     return acc + cartItem.price * (cartItem.quantity || 1);
@@ -22,6 +23,8 @@ export default function CartModal() {
   }, 0);
 
   const totalAmount = totalPriceWithoutShipping + totalShipping;
+
+  // console.log("totalAmount", totalAmount);
   return (
     <>
       <section className="py-5 sm:py-7 bg-blue-100">
@@ -92,7 +95,7 @@ export default function CartModal() {
                 <div className="mb-5">
                   <small className="flex justify-between text-gray-600  mb-1">
                     <span>Total without shipping:</span>
-                    <span>£{totalPriceWithoutShipping}</span>
+                    <span>£{(totalPriceWithoutShipping || 0).toFixed(2)}</span>
                   </small>
 
                   <small className="flex justify-between text-gray-600  mb-1">
@@ -101,16 +104,14 @@ export default function CartModal() {
                   </small>
                   <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
                     <span>Subtotal:</span>
-                    <span>£{totalAmount}</span>
+                    <span>£{(totalAmount || 0).toFixed(2)}</span>
                   </li>
                 </div>
-                <button className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
-                  Continue
-                </button>
+                <div>{children}</div>
 
                 <Link
                   href="/products"
-                  className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-green-600 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
+                  className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-bratwurst bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
                 >
                   Back to products
                 </Link>

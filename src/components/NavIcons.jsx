@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useContext } from "react";
 import CartModal from "./CartModal";
 import CartContext from "@/app/context/CartContext";
+import CstmUserBtn from "./CstmUserBtn";
 
 export default function NavIcons() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -24,7 +25,7 @@ export default function NavIcons() {
 
       <SignedIn>
         <Link href="/user"></Link>
-        <UserButton />
+        <CstmUserBtn />
       </SignedIn>
       <div className="relative cursor-pointer">
         <ShoppingCart onClick={() => setCartOpen((prev) => !prev)} />

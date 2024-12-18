@@ -1,6 +1,7 @@
-import { SignedIn } from "@clerk/nextjs";
-// import { auth } from "@clerk/nextjs/server";
-// import ViewCartCheckout from "./ViewCartCheckout";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
+import CheckOutButton from "./CheckOutButton";
+import { db } from "@/utils/db";
 
 export default async function CheckUser() {
   const { userId } = await auth();
@@ -10,18 +11,14 @@ export default async function CheckUser() {
   const numUser = responseUser.rowCount;
   return (
     <div>
-      <SignedIn> {numUser === 1 ? <ViewCartCheckout /> : ""}</SignedIn>
+      <SignedIn> {numUser === 1 ? <CheckOutButton /> : ""}</SignedIn>
 
       <SignedOut>
-        <p className="p-5 text-red-600">
-          Please{" "}
-          <SignInButton>
-            <button className="text-blue hover:underline hover:decoration-solid">
-              Sign in
-            </button>
-          </SignInButton>
-          to post a comment
-        </p>
+        <SignInButton>
+          <div className="px-4 py-3 inline-block text-sm w-full text-center font-medium text-white bg-bratwurst shadow-sm border border-gray-200 rounded-md cursor-pointer">
+            Please sign in to check out
+          </div>
+        </SignInButton>
       </SignedOut>
     </div>
   );
