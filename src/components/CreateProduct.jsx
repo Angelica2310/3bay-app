@@ -4,8 +4,14 @@ import * as Form from "@radix-ui/react-form";
 import { db } from "@/utils/db";
 
 import { revalidatePath } from "next/cache";
+import { GetProduct } from "@/utils/actions";
+import { redirect } from "next/navigation";
 
-export default async function CreateProduct({ shopId }) {
+export default async function CreateProduct({ shopId, productId }) {
+  let currProduct = "";
+  if (productId) {
+    currProduct = await GetProduct(productId);
+  }
   //shop_id in props
   async function handleSubmit(formData) {
     "use server";
@@ -55,9 +61,84 @@ export default async function CreateProduct({ shopId }) {
     );
     revalidatePath(`/store/${shopId}`);
   }
+
+  async function handleUpdate(formData) {
+    "use server";
+    const obj = Object.fromEntries(formData.entries());
+    const {
+      productName,
+      description,
+      price,
+      shippingCost,
+      image,
+      glbModel,
+      productId,
+    } = obj;
+    // console.log("product form object is: ", obj);
+
+    await db.query(
+      `UPDATE products SET name = $1, description = $2, price = $3, shipping = $4 WHERE id = $5`,
+      [productName, description, price, shippingCost, productId]
+    );
+
+    // If new image has been uploaded
+    if (image.size > 0) {
+      let imgId = (
+        await db.query(
+          `UPDATE images SET name = $1 WHERE products_id = $2 RETURNING id`,
+          [image.name, productId]
+        )
+      ).rows[0].id;
+      await fetch(
+        //3bay-files should be an ENV VARIABLE
+        `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${imgId}`,
+        { method: "PUT", body: image, headers: { "Content-Type": image.type } }
+      );
+    }
+
+    // If new glb model has been uploaded
+    if (glbModel.size > 0) {
+      const exists = await db.query(
+        `SELECT * from glbs WHERE product_id = $1`,
+        [productId]
+      );
+      let glbId = "";
+      if (exists.rowCount > 0) {
+        glbId = (
+          await db.query(
+            `UPDATE glbs SET name = $1 WHERE product_id = $2 RETURNING id`,
+            [glbModel.name, productId]
+          )
+        ).rows[0].id;
+      } else {
+        glbId = (
+          await db.query(
+            `INSERT INTO glbs (product_id, name) VALUES ($1,$2) RETURNING id`,
+            [productId, glbModel.name]
+          )
+        ).rows[0].id;
+      }
+      await fetch(
+        //3bay-files should be an ENV VARIABLE
+        `https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${glbId}`,
+        {
+          method: "PUT",
+          body: glbModel,
+          headers: { "Content-Type": "model/gltf-binary" },
+        }
+      );
+    }
+
+    revalidatePath(`/products/${productId}`);
+    redirect(`/products/${productId}`);
+  }
+
   return (
     <div className="overflow-y-scroll overflow-x-hidden max-h-[60vh] px-1">
-      <Form.Root action={handleSubmit} className="flex flex-col justify-center">
+      <Form.Root
+        action={currProduct ? handleUpdate : handleSubmit}
+        className="flex flex-col justify-center"
+      >
         <Form.Field name="productName">
           <div className="flex justify-between">
             <Form.Label>Product Name:</Form.Label>
@@ -69,6 +150,7 @@ export default async function CreateProduct({ shopId }) {
             <input
               type="text"
               required
+              defaultValue={currProduct && currProduct.name}
               className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
@@ -78,7 +160,10 @@ export default async function CreateProduct({ shopId }) {
             <Form.Label>Product Description</Form.Label>
           </div>
           <Form.Control asChild>
-            <textarea className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]" />
+            <textarea
+              className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
+              defaultValue={currProduct && currProduct.description}
+            />
           </Form.Control>
         </Form.Field>
         {/*  <Form.Field name="category">
@@ -148,6 +233,7 @@ export default async function CreateProduct({ shopId }) {
             <input
               type="text"
               required
+              defaultValue={currProduct && currProduct.price}
               className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
@@ -184,6 +270,7 @@ export default async function CreateProduct({ shopId }) {
           <Form.Control asChild>
             <input
               type="text"
+              defaultValue={currProduct && currProduct.shipping}
               className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
@@ -206,8 +293,13 @@ export default async function CreateProduct({ shopId }) {
             <input type="file" accept="model/gltf-binary, .glb" />
           </Form.Control>
         </Form.Field>
+        <Form.Field name="productId">
+          <Form.Control asChild>
+            <input type="hidden" defaultValue={currProduct && currProduct.id} />
+          </Form.Control>
+        </Form.Field>
         <Form.Submit asChild>
-          <button>Create/Edit</button>
+          {currProduct ? <button>Update</button> : <button>Create</button>}
         </Form.Submit>
       </Form.Root>
     </div>

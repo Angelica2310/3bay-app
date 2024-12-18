@@ -4,6 +4,7 @@ import Link from "next/link";
 import React from "react";
 import Modelviewer from "./ModelViewer";
 import AddToCartButton from "./AddToCartButton";
+import AddProductBtn from "./AddProductBtn";
 
 export default async function Product({ product, ownShop }) {
   const sideLng = 240;
@@ -63,12 +64,22 @@ export default async function Product({ product, ownShop }) {
           <div className="text-sm text-gray-500">{product.description}</div>
         </Link>
         {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
+
         {ownShop ? (
-          <button className="cart-button">Edit Product</button>
-        ) : (
-          <AddToCartButton product={product} />
-        )}
-      </div>
+        // <button className="cart-button">Edit Product</button>
+        <Link
+          href={`/products/${product.id}?edit=true`}
+          className="cart-button"
+        >
+          Edit Product
+        </Link>
+      ) : (
+        <AddToCartButton className="cart-button" product={product} />
+      )}
+      {/* <button className="cart-button">Add to Cart</button> */}
+
+       
     </div>
+  </div>
   );
 }
