@@ -6,8 +6,6 @@ import CartModal from "@/components/CartModal";
 import AddToCartButton from "@/components/AddToCartButton";
 
 import Product from "@/components/Product";
-Link;
-
 
 export default async function FeatureProducts() {
   const products = (
@@ -16,6 +14,7 @@ export default async function FeatureProducts() {
     products.name,
     products.description,
     products.price,
+    products.shipping,
     images.url AS images_url
 FROM 
     products
@@ -63,7 +62,6 @@ ON
 
             </div>*/
           }
-
         })}
       </div>
     </div>

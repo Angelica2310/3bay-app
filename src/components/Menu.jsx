@@ -14,7 +14,7 @@ export default function MenuPage() {
           <Link href="/">Homepage</Link>
           <Link href="/products">Products</Link>
           <Link href="/signout">Logout</Link>
-          <Link href="/">Cart(1)</Link>
+          <Link href="/cart">Cart</Link>
         </div>
       )}
     </div>
