@@ -60,6 +60,8 @@ export default async function CreateProduct({ shopId, productId }) {
       }
     );
     revalidatePath(`/store/${shopId}`);
+    revalidatePath("/browse");
+    revalidatePath("/");
   }
 
   async function handleUpdate(formData) {
