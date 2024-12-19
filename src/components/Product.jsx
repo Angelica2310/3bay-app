@@ -33,14 +33,9 @@ export default async function Product({ product, ownShop }) {
           />
         ) : (
           <div className="relative w-56 h-56">
-            <Image
-              src={altImg.url}
-              alt={altImg.id}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="25vw"
-              className="absolute rounded-md"
-            />
+
+            <p>no image</p>
+
           </div>
         )}
       </>

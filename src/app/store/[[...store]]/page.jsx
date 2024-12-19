@@ -5,6 +5,11 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
+export const metadata = {
+  title: "3Bay | Store",
+  description: "Where you can view your store.",
+};
+
 export default async function StorePage({ params }) {
   const param = (await params).store || undefined;
   let shop = "";

@@ -1,5 +1,11 @@
 import React from "react";
 
+export const metadata = {
+  title: "3Bay | Contact Us",
+  description:
+    "We’d love to hear from you. Our friendly team is always here to chat.",
+};
+
 export default function ContactUsPage() {
   return (
     <div>

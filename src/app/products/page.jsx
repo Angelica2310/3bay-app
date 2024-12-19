@@ -7,6 +7,11 @@ import AddToCartButton from "@/components/AddToCartButton";
 
 import Product from "@/components/Product";
 
+export const metadata = {
+  title: "3Bay | Products",
+  description: "Where you can view all products available on 3Bay.",
+};
+
 export default async function FeatureProducts() {
   const products = (
     await db.query(`SELECT 
@@ -27,7 +32,7 @@ ON
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       <h1 className="mt-12 text-2xl">All products</h1>
-      <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap ">
+      <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap mb-24">
         {products.map((product) => {
           return <Product product={product} key={product.id} />;
           {
