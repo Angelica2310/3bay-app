@@ -42,7 +42,7 @@ export default async function ShopDisplay({ shop, ownShop }) {
         <p>No products yet...</p>
       ) : (
         <div className="mt-12 mb-6 flex flex-col items-center md:flex-row gap-x-8 gap-y-16 justify-between flex-wrap">
-          {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray-600 py-4 my-20 text-white rounded-2xl"*/}
+          {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray600 py-4 my-20 text-white rounded-2xl"*/}
           {!products[1] ? (
             <Product product={products} ownShop={ownShop} />
           ) : (

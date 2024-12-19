@@ -11,7 +11,7 @@ export default function ShopComponent({ shop }) {
 
     <Link
       href={`/store/${shop.id}`}
-      className="bg-slate-200 rounded-lg w-60 h-60 p-2"
+      className="bg-gray200 rounded-lg w-60 h-60 p-2"
     >
       <div className="flex flex-col text-center h-48">
         <p className="text-lg font-semibold">{shop.name}</p>

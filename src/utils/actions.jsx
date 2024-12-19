@@ -6,8 +6,8 @@ import Image from "next/image";
 // Returns user object if user exists, otherwise returns undefined. Optional argument to pass a clerk_id, else it defaults to check currently logged in user.
 export async function GetUser(clerk_id) {
   const id = clerk_id || (await auth()).userId;
-  let response = {};
-  let result = [];
+  let response = "";
+  let result = "";
   if (id) {
     response = await db.query(`SELECT * FROM users WHERE clerk_id = $1`, [id]);
     result = await response.rows[0];
