@@ -4,6 +4,8 @@ import Menu from "./Menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
+import CstmUserBtn from "./CstmUserBtn";
+import { SignedIn } from "@clerk/nextjs";
 
 export default function NavBar() {
   return (
@@ -13,7 +15,7 @@ export default function NavBar() {
         <Link href="/">
           <div className="text-2xl tracking-wide">3Bay</div>
         </Link>
-        <Menu />
+        <NavIcons />
       </div>
 
       {/* DESKTOP */}
