@@ -3,10 +3,19 @@
 export default function ErrorPage({ error, reset }) {
   return (
     <html>
-      <body>
-        <h1>Oh no! Something went wrong on that page! 🙈</h1>
-        <p>{error.message}</p>
-        <button onClick={() => reset()}>Try again</button>
+      <body className="h-screen bg-stormygreen flex items-center justify-center">
+        <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg text-center border border-red-300">
+          <h1 className="text-3xl font-bold text-red-600 mb-4">
+            Oh no! Something went wrong 🙈
+          </h1>
+          <p className="text-gray-700 mb-6">{error.message}</p>
+          <button
+            onClick={() => reset()}
+            className="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition"
+          >
+            Try Again
+          </button>
+        </div>
       </body>
     </html>
   );
