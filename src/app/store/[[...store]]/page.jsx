@@ -40,7 +40,7 @@ export default async function StorePage({ params }) {
   }
 
   return (
-    <div className="flex justify-center items-center h-full">
+    <div className="flex justify-center items-center">
       <SignedIn>
         {/* If logged in user's id does not exist in shop database, render the shop creation form */}
         {!param ? !shop && <CreateShopForm /> : <></>}
