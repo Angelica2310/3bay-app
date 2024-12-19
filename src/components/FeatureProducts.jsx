@@ -23,7 +23,7 @@ ON
 
   //   console.log("products limit", products);
   return (
-    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+    <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap mb-24">
       {products.map((product) => {
         return <Product product={product} key={product.id} />;
         {

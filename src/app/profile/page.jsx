@@ -5,6 +5,11 @@ import { db } from "@/utils/db";
 import BuyerProfile from "@/components/BuyerProfile";
 import { CheckForUser } from "@/utils/actions";
 
+export const metadata = {
+  title: "3Bay | Profile",
+  description: "Where you can view your profile.",
+};
+
 export default async function ProfilePage() {
   const { userId } = await auth();
 

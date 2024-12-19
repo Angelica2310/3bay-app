@@ -4,6 +4,11 @@ import ShopsTab from "@/components/ShopsTab";
 import ProductsTab from "@/components/ProductsTab";
 import SearchBar from "@/components/SearchBar";
 
+export const metadata = {
+  title: "3Bay | Browse",
+  description: "Where you can browse all products and shops on 3Bay.",
+};
+
 export default function browsePage() {
   return (
     <main>
