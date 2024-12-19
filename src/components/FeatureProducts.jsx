@@ -12,7 +12,9 @@ export default async function FeatureProducts() {
     products.description,
     products.price,
    
-    images.url AS images_url
+   images.id AS image_id,
+    images.url AS image_url,
+    images.name AS image_name
 FROM 
     products
 LEFT JOIN 
@@ -26,36 +28,6 @@ ON
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap mb-24">
       {products.map((product) => {
         return <Product product={product} key={product.id} />;
-        {
-          /* 
-          <div key={product.id}>
-            <Link
-              href={`/products/${product.id}`}
-              className="w-full flex flex-col gap-4"
-            >
-              <div className="relative w-60 h-60">
-                <Image
-                  src={product.images_url}
-                  alt={product.name}
-                  fill
-                  style={{ objectFit: "cover" }}
-                  sizes="25vw"
-                  className="absolute rounded-md"
-                />
-              </div>
-
-              <div className="flex justify-between">
-                <span className="font-medium">{product.name}</span>
-                <span className="font-semibold">£{product.price}</span>
-              </div>
-              <div className="text-sm text-gingeralefizz ">
-                {product.description}{" "}
-              </div>
-              <button className="cart-button">Add to Cart</button>
-            </Link>
-          </div>
-        );*/
-        }
       })}
     </div>
   );

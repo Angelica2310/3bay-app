@@ -7,7 +7,6 @@ import AddToCartButton from "./AddToCartButton";
 import AddProductBtn from "./AddProductBtn";
 
 export default async function Product({ product, ownShop }) {
-  const sideLng = 240;
   const modelData = await db.query(
     "SELECT * FROM glbs WHERE product_id = $1  LIMIT 1",
     [product.id]
@@ -22,8 +21,8 @@ export default async function Product({ product, ownShop }) {
           <Image
             alt={product.image_name}
             src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${product.image_id}`}
-            width={sideLng}
-            height={sideLng}
+            width={224}
+            height={224}
             className="rounded-md"
           />
         ) : (
