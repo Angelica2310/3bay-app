@@ -29,7 +29,7 @@ export default function SearchBar() {
         placeholder="Search"
         className="bg-transparent flex-1 outline-none"
       />
-      <button className="cursor-pointer">
+      <button className="cursor-pointer" aria-label="search button">
         <SearchIcon />
       </button>
     </form>
