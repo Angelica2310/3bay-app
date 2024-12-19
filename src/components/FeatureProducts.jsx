@@ -85,7 +85,7 @@ ON
     <span className="font-medium">Product name</span>
     <span className="font-semibold">£10</span>
   </div>
-  <div className="text-sm text-gray-500">Product description</div>
+  <div className="text-sm text-gray500">Product description</div>
   <button className="rounded-2xl ring-1 ring-sky-600 text-lama w-max py-2 px-4 text-xs hover:bg-sky-600 hover:text-white">
     Add to Cart
   </button>
@@ -114,7 +114,7 @@ ON
     <span className="font-medium">Product name</span>
     <span className="font-semibold">£10</span>
   </div>
-  <div className="text-sm text-gray-500">Product description</div>
+  <div className="text-sm text-gray500">Product description</div>
   <button className="rounded-2xl ring-1 ring-sky-600 text-lama w-max py-2 px-4 text-xs hover:bg-sky-600 hover:text-white">
     Add to Cart
   </button>
@@ -143,7 +143,7 @@ ON
     <span className="font-medium">Product name</span>
     <span className="font-semibold">£10</span>
   </div>
-  <div className="text-sm text-gray-500">Product description</div>
+  <div className="text-sm text-gray500">Product description</div>
   <button className="rounded-2xl ring-1 ring-sky-600 text-lama w-max py-2 px-4 text-xs hover:bg-sky-600 hover:text-white">
     Add to Cart
   </button>
@@ -172,7 +172,7 @@ ON
     <span className="font-medium">Product name</span>
     <span className="font-semibold">£10</span>
   </div>
-  <div className="text-sm text-gray-500">Product description</div>
+  <div className="text-sm text-gray500">Product description</div>
   <button className="rounded-2xl ring-1 ring-sky-600 text-lama w-max py-2 px-4 text-xs hover:bg-sky-600 hover:text-white">
     Add to Cart
   </button>

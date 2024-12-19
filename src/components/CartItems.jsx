@@ -12,7 +12,7 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
           <div className="flex flex-col gap-8" key={`cart-${cartItem.name}`}>
             {/* ITEM */}
             <div className="flex gap-4">
-              <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
+              <div className="block w-16 h-16 rounded border border-gray200 overflow-hidden">
                 <img src={cartItem.image} alt={cartItem.name} />
               </div>
               <div className="flex flex-col justify-between w-full">
@@ -28,13 +28,13 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
                     </div>
                   </div>
                   {/* DESC */}
-                  <div className="text-xs text-gray-500">available</div>
+                  <div className="text-xs text-gray500">available</div>
                 </div>
                 {/* BOTTOM */}
                 <div className="flex justify-between text-xs">
-                  {/* <span className="text-gray-500">Qty: 1</span> */}
+                  {/* <span className="text-gray500">Qty: 1</span> */}
                   <button
-                    className="text-blue-500"
+                    className="text-blue500"
                     onClick={() => deleteItemFromCart(cartItem?.product)}
                   >
                     remove
@@ -52,7 +52,7 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
           <span>Subtotal: </span>
           <span>£{(totalPrice || 0).toFixed(2)}</span>
         </div>
-        <p className="text-sm mt-2 text-gray-500 mb-4">
+        <p className="text-sm mt-2 text-gray500 mb-4">
           Shipping is calculated at checkout
         </p>
         <Link

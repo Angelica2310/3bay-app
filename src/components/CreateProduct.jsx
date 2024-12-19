@@ -151,7 +151,7 @@ export default async function CreateProduct({ shopId, productId }) {
               type="text"
               required
               defaultValue={currProduct && currProduct.name}
-              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
+              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-gray400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
         </Form.Field>
@@ -161,7 +161,7 @@ export default async function CreateProduct({ shopId, productId }) {
           </div>
           <Form.Control asChild>
             <textarea
-              className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
+              className="box-border inline-flex h-[70px] w-full appearance-none items-center justify-center rounded p-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-gray400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
               defaultValue={currProduct && currProduct.description}
             />
           </Form.Control>
@@ -234,7 +234,7 @@ export default async function CreateProduct({ shopId, productId }) {
               type="text"
               required
               defaultValue={currProduct && currProduct.price}
-              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
+              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-gray400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
         </Form.Field>
@@ -271,7 +271,7 @@ export default async function CreateProduct({ shopId, productId }) {
             <input
               type="text"
               defaultValue={currProduct && currProduct.shipping}
-              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-slate-400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
+              className="box-border inline-flex h-[35px] w-full appearance-none items-center justify-center rounded px-2.5 text-[15px] leading-none shadow-[0_0_0_1px] shadow-blackA6 outline-none selection:bg-blackA6 selection:text-purple-950 selection:bg-gray400 hover:shadow-[0_0_0_1px_black] focus:shadow-[0_0_0_2px_black]"
             />
           </Form.Control>
         </Form.Field>

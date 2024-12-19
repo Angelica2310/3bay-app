@@ -49,7 +49,7 @@ export default async function Product({ product, ownShop }) {
 
   return (
     <div>
-      <div className="bg-slate-200 rounded-lg w-60 h-80 p-2">
+      <div className="bg-gray200 rounded-lg w-60 h-80 p-2">
         <Link href={`/products/${product.id}`}>
           <div id="imageModel">
             {/*modelData.rowCount !== 0 ? (
@@ -66,20 +66,18 @@ export default async function Product({ product, ownShop }) {
         {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
 
         {ownShop ? (
-        // <button className="cart-button">Edit Product</button>
-        <Link
-          href={`/products/${product.id}?edit=true`}
-          className="cart-button"
-        >
-          Edit Product
-        </Link>
-      ) : (
-        <AddToCartButton className="cart-button" product={product} />
-      )}
-      {/* <button className="cart-button">Add to Cart</button> */}
-
-       
+          // <button className="cart-button">Edit Product</button>
+          <Link
+            href={`/products/${product.id}?edit=true`}
+            className="cart-button"
+          >
+            Edit Product
+          </Link>
+        ) : (
+          <AddToCartButton className="cart-button" product={product} />
+        )}
+        {/* <button className="cart-button">Add to Cart</button> */}
+      </div>
     </div>
-  </div>
   );
 }
