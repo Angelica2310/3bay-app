@@ -1,11 +1,8 @@
 import Link from "next/link";
 import React from "react";
-import Menu from "./Menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
-import CstmUserBtn from "./CstmUserBtn";
-import { SignedIn } from "@clerk/nextjs";
 
 export default function NavBar() {
   return (
@@ -29,8 +26,6 @@ export default function NavBar() {
           <div className="hidden xl:flex gap-4">
             <Link href="/">Homepage</Link>
             <Link href="/browse">Browse</Link>
-            {/*<Link href="/products">Products</Link>
-            <Link href="/stores">Stores</Link>*/}
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </div>

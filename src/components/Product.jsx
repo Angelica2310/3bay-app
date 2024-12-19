@@ -33,7 +33,9 @@ export default async function Product({ product, ownShop }) {
           />
         ) : (
           <div className="relative w-56 h-56">
+
             <p>no image</p>
+
           </div>
         )}
       </>
