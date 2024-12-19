@@ -1,5 +1,10 @@
 import React from "react";
 
+export const metadata = {
+  title: "3Bay | About Us",
+  description: "Find more information about 3Bay and its co-founders.",
+};
+
 export default function AboutUsPage() {
   return (
     <div>

@@ -3,12 +3,24 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { db } from "@/utils/db";
-
 import AddProductBtn from "@/components/AddProductBtn";
 import { GetUser } from "@/utils/actions";
-
 import AddToCartButton from "@/components/AddToCartButton";
+import { db } from "@/utils/db";
+
+export async function generateMetadata({ params, searchParams }, parent) {
+  const id = (await params).id;
+
+
+  const product = (await db.query(`SELECT * FROM products WHERE id = ${id}`))
+    .rows[0];
+
+  // console.log("id: ", id);
+  return {
+    title: `${product.name} | Details`,
+    description: `More about ${product.name}`,
+  };
+}
 
 export default async function SingleProductPage({ params, searchParams }) {
   const prodId = (await params).id;
@@ -109,6 +121,7 @@ export default async function SingleProductPage({ params, searchParams }) {
                 edit={edit}
               />
             ) : (
+
               <div className="bg-gingeralefizz rounded-2xl">
                 <AddToCartButton product={product} />
               </div>

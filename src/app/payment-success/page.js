@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "3Bay | Payment Success",
+  description: "Thank you for your payment.",
+};
+
 export default async function PaymentSuccess({ searchParams }) {
   const { totalAmount } = await searchParams;
   return (
