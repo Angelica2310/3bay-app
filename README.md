@@ -56,7 +56,7 @@ Default profile information (username, email) is from your Clerk account but can
 In addition to guest access, logged in users can:
 
 - View profile and update user details
-- Create a store page
+- Become a Seller
 - Proceed from cart to checkout page
 - Make payments and complete a purchase
 
