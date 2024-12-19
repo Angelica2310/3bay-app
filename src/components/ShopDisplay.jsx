@@ -25,7 +25,7 @@ export default async function ShopDisplay({ shop, ownShop }) {
         </h2>
 
         <p className="py-4 text-xl text-justify">{shop.description}</p>
-        <div className="flex flex-col sm:flex-row mt-2 mb-4">
+        <div className="flex flex-col sm:flex-row mt-2 mb-4 text-black">
           {ownShop && <AddProductBtn shopId={shop.id} />}
           {ownShop && (
             <Link
