@@ -3,7 +3,6 @@ import * as Tabs from "@radix-ui/react-tabs";
 import ShopsTab from "@/components/ShopsTab";
 import ProductsTab from "@/components/ProductsTab";
 import SearchBar from "@/components/SearchBar";
-import Revalidate from "@/components/Revalidate";
 
 export const metadata = {
   title: "3Bay | Browse",

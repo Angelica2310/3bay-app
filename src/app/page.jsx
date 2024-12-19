@@ -1,5 +1,4 @@
 import FeatureProducts from "@/components/FeatureProducts";
-import Revalidate from "@/components/Revalidate";
 import Slider from "@/components/Slider";
 
 export default function HomePage() {
