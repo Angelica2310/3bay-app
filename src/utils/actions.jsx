@@ -1,6 +1,7 @@
 "use server";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/utils/db";
+import Image from "next/image";
 
 // Returns user object if user exists, otherwise returns undefined. Optional argument to pass a clerk_id, else it defaults to check currently logged in user.
 export async function GetUser(clerk_id) {
@@ -51,7 +52,12 @@ export async function GetShopById(id) {
 // Retrieves products associated with a shop from db via shopId passed as arg
 export async function GetShopProducts(shopId) {
   const response = await db.query(
-    `SELECT * FROM products WHERE shop_id = ${shopId}`
+    `SELECT products.*, images.url AS image_url,
+    images.id AS image_id,
+    images.name AS image_name FROM products LEFT JOIN 
+    images
+ON 
+    products.id = images.products_id WHERE shop_id = ${shopId}`
   );
   const products = await response.rows;
 
@@ -73,7 +79,9 @@ export async function GetProduct(prodId) {
     products.price,
     products.shipping,
     products.shop_id,
-    images.url AS image_url
+    images.url AS image_url,
+    images.id AS image_id,
+    images.name AS image_name
 FROM 
     products
 LEFT JOIN 
@@ -87,4 +95,15 @@ ON
   } else {
     return product;
   }
+}
+
+export async function displayImage(imageId, imageAlt, width, height) {
+  return (
+    <Image
+      src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${imageId}`}
+      alt={imageAlt}
+      width={width}
+      height={height}
+    />
+  );
 }

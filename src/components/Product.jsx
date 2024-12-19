@@ -15,27 +15,20 @@ export default async function Product({ product, ownShop }) {
 
   async function altImage() {
     "use server";
-    const altImg = (
-      await db.query("SELECT * FROM images WHERE products_id = $1 LIMIT 1", [
-        product.id,
-      ])
-    ).rows[0];
 
     return (
       <>
-        {altImg.url === null ? (
+        {product.image_url === null ? (
           <Image
-            alt={altImg.name}
-            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${altImg.id}`}
+            alt={product.image_name}
+            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${product.image_id}`}
             width={sideLng}
             height={sideLng}
             className="rounded-md"
           />
         ) : (
           <div className="relative w-56 h-56">
-
             <p>no image</p>
-
           </div>
         )}
       </>
