@@ -132,6 +132,9 @@ export default async function CreateProduct({ shopId, productId }) {
     }
 
     revalidatePath(`/products/${productId}`);
+    revalidatePath(`/store/${shopId}`);
+    revalidatePath("/browse");
+    revalidatePath("/");
     redirect(`/products/${productId}`);
   }
 
