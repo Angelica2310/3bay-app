@@ -45,7 +45,7 @@ export default function ContactUsPage() {
               <h2 className="mt-4 text-base font-medium text-white">
                 Chat to sales
               </h2>
-              <p className="mt-2 text-sm text-gray500 text-gingeralefizz">
+              <p className="mt-2 text-sm text-gingeralefizz">
                 Speak to our friendly team.
               </p>
               <p className="mt-2 text-sm text-stormygreen">hello@3bay.co.uk</p>
@@ -77,7 +77,7 @@ export default function ContactUsPage() {
               <h2 className="mt-4 text-base font-medium text-white">
                 Chat to support
               </h2>
-              <p className="mt-2 text-sm text-gray500 dark:text-gray400">
+              <p className="mt-2 text-sm text-gingeralefizz dark:text-gray400">
                 We’re here to help.
               </p>
               <p className="mt-2 text-sm text-stormygreen">Start new chat</p>
@@ -109,7 +109,7 @@ export default function ContactUsPage() {
               <h2 className="mt-4 text-base font-medium text-white">
                 Visit us
               </h2>
-              <p className="mt-2 text-sm text-gray500 dark:text-gray400">
+              <p className="mt-2 text-sm text-gingeralefizz dark:text-gray400">
                 Visit our office HQ..
               </p>
               <p className="mt-2 text-sm text-stormygreen">
@@ -136,7 +136,7 @@ export default function ContactUsPage() {
               </span>
 
               <h2 className="mt-4 text-base font-medium text-white">Call us</h2>
-              <p className="mt-2 text-sm text-gray500 dark:text-gray400">
+              <p className="mt-2 text-sm text-gingeralefizz dark:text-gray400">
                 Mon-Fri from 8am to 5pm.
               </p>
               <p className="mt-2 text-sm text-stormygreen">+44 234 567 890</p>
