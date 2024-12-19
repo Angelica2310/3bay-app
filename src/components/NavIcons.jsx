@@ -6,6 +6,7 @@ import { useState, useContext } from "react";
 import CartModal from "./CartModal";
 import CartContext from "@/app/context/CartContext";
 import CstmUserBtn from "./CstmUserBtn";
+import MenuPage from "./Menu";
 
 export default function NavIcons() {
   const [cartOpen, setCartOpen] = useState(false);
@@ -15,6 +16,9 @@ export default function NavIcons() {
 
   return (
     <div className="flex gap-3 items-center xl:gap-5 cursor-pointer relative">
+      <div className="xl:hidden md:visible flex justify-center">
+        <MenuPage />
+      </div>
       <SignedOut>
         <SignInButton>
           <Link href="/sign-in">
