@@ -13,7 +13,6 @@ export const metadata = {
 export default function browsePage() {
   return (
     <main>
-      <Revalidate path="browse" />
       <div className="mt-12 w-[80vw] ml-[4vw]">
         <SearchBar />
         <p className="pt-2">Viewing all results</p>
