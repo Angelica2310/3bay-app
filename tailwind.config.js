@@ -1,8 +1,41 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}", // Adjust to match your file structure
+    "./public/index.html",
+  ],
 
   theme: {
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      prismarine: "#127475",
+      stormygreen: "#0e9594",
+      gingeralefizz: "#f5dfbb",
+      benihired: "#f2542d",
+      bratwurst: "#562c2c",
+      white: "#ffffff",
+      black: "#000000",
+      // tailwind grays
+      gray100: "#f3f4f6",
+      gray200: "#e5e7eb",
+      gray300: "#d1d5db",
+      gray400: "#9ca3af",
+      gray500: "#6b7280",
+      gray600: "#4b5563",
+      gray700: "#374151",
+      gray800: "#1f2937",
+      gray900: "#111827",
+      // Other key colors
+      purple100: "#faf5ff",
+      blue100: "#dbeafe",
+      blue500: "#3b82f6",
+      red600: "#e11d48",
+    },
     extend: {
       backgroundColor: {
         "color-theme1": "#0E9594",

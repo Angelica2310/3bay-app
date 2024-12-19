@@ -7,7 +7,7 @@ import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
 import { revalidatePath } from "next/cache";
 
-export default async function BuyerProfile({ user }) {
+export default async function BuyerProfile({ user, shop }) {
   async function handleSubmit(formData) {
     "use server";
     const username = formData.get("username");
@@ -39,7 +39,7 @@ export default async function BuyerProfile({ user }) {
             height={96}
             src={user.image_url}
             alt="Profile Picture"
-            className="rounded-full border-4 border-gray-300"
+            className="rounded-full border-4 border-gray300"
           />
           <Form.Root action={handleSubmit}>
             <Form.Field name="username">
@@ -75,7 +75,7 @@ export default async function BuyerProfile({ user }) {
 
           <div>
             {user?.shop_id ? (
-              <Link href="/">
+              <Link href={`/store/${user.shop_id}`}>
                 <button className="button-style">My Store</button>
               </Link>
             ) : (
@@ -84,15 +84,16 @@ export default async function BuyerProfile({ user }) {
               </Link>
             )}
           </div>
+
           <div className="w-full bg-white p-4 rounded-lg mt-6">
-            <h2 className="text-lg font-semibold text-gray-800">
+            <h2 className="text-lg font-semibold text-gray800">
               Recently Viewed Products
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 mt-4">
               <img
                 src="https://via.placeholder.com/150"
                 alt="Product 1"
-                className="w-full h-auto border-2 border-gray-300"
+                className="w-full h-auto border-2 border-gray300"
               />
             </div>
           </div>

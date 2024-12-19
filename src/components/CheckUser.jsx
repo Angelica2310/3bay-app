@@ -15,7 +15,7 @@ export default async function CheckUser() {
 
       <SignedOut>
         <SignInButton>
-          <div className="px-4 py-3 inline-block text-sm w-full text-center font-medium text-white bg-bratwurst shadow-sm border border-gray-200 rounded-md cursor-pointer">
+          <div className="px-4 py-3 inline-block text-sm w-full text-center font-medium text-white bg-bratwurst shadow-sm border border-gray200 rounded-md cursor-pointer">
             Please sign in to check out
           </div>
         </SignInButton>

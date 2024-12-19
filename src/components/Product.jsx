@@ -44,7 +44,7 @@ export default async function Product({ product, ownShop }) {
 
   return (
     <div>
-      <div className="bg-slate-200 rounded-lg w-60 h-80 p-2">
+      <div className="bg-gray200 rounded-lg w-60 h-80 p-2">
         <Link href={`/products/${product.id}`}>
           <div id="imageModel">
             {/*modelData.rowCount !== 0 ? (
