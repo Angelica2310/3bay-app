@@ -12,6 +12,8 @@
 - Radix UI Primitives (Various used)
 - Stripe
 - React DOM & React Redux
+- aws s3 bucket
+- aws api gateway setup as RESTful and able to handle Binary media
 
 ## Installing on your machine
 
@@ -20,6 +22,7 @@ Please follow these step-by-step instructions if you would like to install this 
 - Fork a copy of this repo to your own account
 - Clone to a suitable area on your local machine
 - Navigate to the created repo and run 'npm install' in your terminal
+- use your own s3 bucket and api and amend the fetch request to align with your own
 - Add a .env.local file to the root folder and add your environment variables
 - Optional: Use 'npm run dev' to view a live development representation
 - Optional: Implement any desired changes and push to your repo.
