@@ -15,32 +15,20 @@ export default async function Product({ product, ownShop }) {
 
   async function altImage() {
     "use server";
-    const altImg = (
-      await db.query("SELECT * FROM images WHERE products_id = $1 LIMIT 1", [
-        product.id,
-      ])
-    ).rows[0];
 
     return (
       <>
-        {altImg.url === null ? (
+        {product.image_url === null ? (
           <Image
-            alt={altImg.name}
-            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${altImg.id}`}
+            alt={product.image_name}
+            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${product.image_id}`}
             width={sideLng}
             height={sideLng}
             className="rounded-md"
           />
         ) : (
           <div className="relative w-56 h-56">
-            <Image
-              src={altImg.url}
-              alt={altImg.id}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="25vw"
-              className="absolute rounded-md"
-            />
+            <p>no image</p>
           </div>
         )}
       </>
@@ -49,7 +37,7 @@ export default async function Product({ product, ownShop }) {
 
   return (
     <div>
-      <div className="bg-slate-200 rounded-lg w-60 h-80 p-2">
+      <div className="bg-gray200 rounded-lg w-60 h-80 p-2">
         <Link href={`/products/${product.id}`}>
           <div id="imageModel">
             {/*modelData.rowCount !== 0 ? (
@@ -66,20 +54,18 @@ export default async function Product({ product, ownShop }) {
         {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
 
         {ownShop ? (
-        // <button className="cart-button">Edit Product</button>
-        <Link
-          href={`/products/${product.id}?edit=true`}
-          className="cart-button"
-        >
-          Edit Product
-        </Link>
-      ) : (
-        <AddToCartButton className="cart-button" product={product} />
-      )}
-      {/* <button className="cart-button">Add to Cart</button> */}
-
-       
+          // <button className="cart-button">Edit Product</button>
+          <Link
+            href={`/products/${product.id}?edit=true`}
+            className="cart-button"
+          >
+            Edit Product
+          </Link>
+        ) : (
+          <AddToCartButton className="cart-button" product={product} />
+        )}
+        {/* <button className="cart-button">Add to Cart</button> */}
+      </div>
     </div>
-  </div>
   );
 }

@@ -9,14 +9,12 @@ export default async function ShopDisplay({ shop, ownShop }) {
   const products = await GetShopProducts(shop.id);
 
   return (
-
     <div
-      className={`bg-color-${shop.theme} bg-color-card-${shop.theme} flex flex-col h-full w-full  items-center `}
+      className={`bg-color-${shop.theme} bg-color-card-${shop.theme} flex flex-col  w-full  items-center `}
     >
       <h3
         className={`bg-color-card-${shop.theme} text-color-text-${shop.theme} mt-10 px-6 py-2 rounded-t-3xl text-2xl pb-1 font-bold`}
       >
-
         My Shop
       </h3>
       <div
@@ -27,7 +25,7 @@ export default async function ShopDisplay({ shop, ownShop }) {
         </h2>
 
         <p className="py-4 text-xl text-justify">{shop.description}</p>
-        <div className="flex flex-col sm:flex-row mt-2 mb-4">
+        <div className="flex flex-col sm:flex-row mt-2 mb-4 text-black">
           {ownShop && <AddProductBtn shopId={shop.id} />}
           {ownShop && (
             <Link
@@ -41,12 +39,12 @@ export default async function ShopDisplay({ shop, ownShop }) {
       </div>
       {/* Render this if no products associated with shop  */}
       {!products ? (
-        <p>No products yet...</p>
+        <p className="pt-12 pb-48">No products yet...</p>
       ) : (
-        <div className="mt-12 mb-6 flex flex-col items-center md:flex-row gap-x-8 gap-y-16 justify-between flex-wrap">
-          {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray-600 py-4 my-20 text-white rounded-2xl"*/}
+        <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 my-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
+          {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray600 py-4 my-20 text-white rounded-2xl"*/}
           {!products[1] ? (
-            <Product product={products} />
+            <Product product={products} ownShop={ownShop} />
           ) : (
             products.map((product) => {
               return (

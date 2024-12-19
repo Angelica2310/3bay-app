@@ -21,6 +21,12 @@
   .bg-white {
     background-color: #ffffff;
   }
+  .text-black {
+    color: #000000;
+  }
+  .text-white {
+    color: #ffffff;
+  }
 }
 
 /*BRAND COLOURS */
@@ -67,7 +73,7 @@ body {
 }
 
 .submit-style {
-  @apply w-[200px] px-3 py-1 m-2 bg-gray-600 text-white font-medium rounded-lg hover:bg-bratwurst hover:scale-105 transition;
+  @apply w-[200px] px-3 py-1 m-2 bg-gingeralefizz text-white font-medium rounded-lg hover:bg-bratwurst hover:scale-105 transition;
 }
 
 .button-style {

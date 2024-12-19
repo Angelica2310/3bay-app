@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Menu from "./Menu";
 import Image from "next/image";
 import SearchBar from "./SearchBar";
 import NavIcons from "./NavIcons";
@@ -13,7 +12,7 @@ export default function NavBar() {
         <Link href="/">
           <div className="text-2xl tracking-wide">3Bay</div>
         </Link>
-        <Menu />
+        <NavIcons />
       </div>
 
       {/* DESKTOP */}
@@ -27,8 +26,6 @@ export default function NavBar() {
           <div className="hidden xl:flex gap-4">
             <Link href="/">Homepage</Link>
             <Link href="/browse">Browse</Link>
-            {/*<Link href="/products">Products</Link>
-            <Link href="/stores">Stores</Link>*/}
             <Link href="/about">About</Link>
             <Link href="/contact">Contact</Link>
           </div>
