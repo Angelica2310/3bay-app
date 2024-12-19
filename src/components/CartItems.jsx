@@ -6,14 +6,23 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
     <div>
       <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
       {/* // CART ITEMS */}
+
       {cart?.cartItems?.map((cartItem) => {
         // console.log("cartItem", cartItem);
+
         return (
           <div className="flex flex-col gap-8" key={`cart-${cartItem.name}`}>
             {/* ITEM */}
             <div className="flex gap-4">
-              <div className="block w-16 h-16 rounded border border-gray200 overflow-hidden">
-                <img src={cartItem.image} alt={cartItem.name} />
+
+              <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
+                <Image
+                  src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${cartItem.image}`}
+                  alt={cartItem.name}
+                  width={64}
+                  height={64}
+                />
+
               </div>
               <div className="flex flex-col justify-between w-full">
                 {/* TOP */}

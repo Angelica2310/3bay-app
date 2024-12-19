@@ -9,14 +9,12 @@ export default async function ShopDisplay({ shop, ownShop }) {
   const products = await GetShopProducts(shop.id);
 
   return (
-
     <div
       className={`bg-color-${shop.theme} bg-color-card-${shop.theme} flex flex-col h-full w-full  items-center `}
     >
       <h3
         className={`bg-color-card-${shop.theme} text-color-text-${shop.theme} mt-10 px-6 py-2 rounded-t-3xl text-2xl pb-1 font-bold`}
       >
-
         My Shop
       </h3>
       <div
@@ -46,7 +44,7 @@ export default async function ShopDisplay({ shop, ownShop }) {
         <div className="mt-12 mb-6 flex flex-col items-center md:flex-row gap-x-8 gap-y-16 justify-between flex-wrap">
           {/* old styling of above div "grid grid-flow-row sm:grid-cols-2 sm:gap-2 md:grid-cols-3 md:gap-3 xl:grid-cols-4 xl:gap-4 bg-gray600 py-4 my-20 text-white rounded-2xl"*/}
           {!products[1] ? (
-            <Product product={products} />
+            <Product product={products} ownShop={ownShop} />
           ) : (
             products.map((product) => {
               return (

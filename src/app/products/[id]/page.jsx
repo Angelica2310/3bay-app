@@ -45,30 +45,19 @@ export default async function SingleProductPage({ params, searchParams }) {
 
   async function image() {
     "use server";
-    const img = (
-      await db.query("SELECT * FROM images WHERE products_id = $1 LIMIT 1", [
-        product.id,
-      ])
-    ).rows[0];
 
     return (
       <>
-        {img.url === null ? (
+        {product.image_url === null ? (
           <Image
-            alt={img.name}
-            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${img.id}`}
+            alt={product.image_name}
+            src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${product.image_id}`}
             fill
             style={{ objectFit: "contain" }}
             className="rounded-md"
           />
         ) : (
-          <Image
-            src={img.url}
-            alt={product.name}
-            fill
-            style={{ objectFit: "fill" }}
-            className="absolute rounded-xl"
-          />
+          <p>no image</p>
         )}
       </>
     );

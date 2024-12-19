@@ -47,8 +47,15 @@ export default function Cart({ children }) {
                         {/* IMAGE, NAME, DESC */}
                         <div className="w-full md:w-full flex flex-col gap-8">
                           <div className="flex leading-5">
-                            <div className="block w-16 h-16 rounded border border-gray200 overflow-hidden">
-                              <img src={cartItem.image} alt={cartItem.name} />
+
+                            <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
+                              <Image
+                                src={`https://11mn4if8mi.execute-api.eu-west-2.amazonaws.com/dev/3bay-files/${cartItem.image}`}
+                                alt={cartItem.name}
+                                width={64}
+                                height={64}
+                              />
+
                             </div>
                             <div className="ml-3">
                               <p>{cartItem.name}</p>
@@ -100,7 +107,7 @@ export default function Cart({ children }) {
 
                   <small className="flex justify-between text-gray600  mb-1">
                     <span>Shipping:</span>
-                    <span>£{totalShipping}</span>
+                    <span>£{(totalShipping || 0).toFixed(2)}</span>
                   </small>
                   <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
                     <span>Subtotal:</span>

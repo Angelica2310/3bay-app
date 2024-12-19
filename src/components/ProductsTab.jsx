@@ -5,11 +5,10 @@ import Product from "./Product";
 export default async function ProductsTab() {
   const products = (
     await db.query(`SELECT 
-        products.id,
-        products.name,
-        products.description,
-        products.price,
-        images.url AS images_url
+        products.*,
+        images.url AS image_url,
+        images.id AS image_id,
+        images.name AS image_name
     FROM 
         products
     LEFT JOIN 
