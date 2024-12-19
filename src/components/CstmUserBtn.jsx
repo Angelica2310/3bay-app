@@ -23,17 +23,19 @@ export default function CstmUserBtn() {
     <>
       {user && (
         <DropdownMenu.Root>
-          <DropdownMenu.Trigger>
-            <Avatar.Root className="inline-flex size-[30px] select-none items-center justify-center overflow-hidden rounded-full align-middle">
-              <Avatar.Image
-                className="size-full rounded-[inherit] object-cover"
-                src={user.image_url}
-                alt={user.name}
-              />
-              <Avatar.Fallback className="leading-1 flex size-full items-center justify-center bg-white text-[15px] font-medium">
-                {user.name}
-              </Avatar.Fallback>
-            </Avatar.Root>
+          <DropdownMenu.Trigger asChild>
+            <button aria-label="user button">
+              <Avatar.Root className="inline-flex size-[30px] select-none items-center justify-center overflow-hidden rounded-full align-middle">
+                <Avatar.Image
+                  className="size-full rounded-[inherit] object-cover"
+                  src={user.image_url}
+                  alt="user avatar"
+                />
+                <Avatar.Fallback className="leading-1 flex size-full items-center justify-center bg-white text-[15px] font-medium">
+                  {user.name}
+                </Avatar.Fallback>
+              </Avatar.Root>
+            </button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Portal>
             <DropdownMenu.Content className="min-w-[220px] rounded-md bg-white p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform] data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade data-[side=right]:animate-slideLeftAndFade data-[side=top]:animate-slideDownAndFade">
