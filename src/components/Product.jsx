@@ -33,14 +33,7 @@ export default async function Product({ product, ownShop }) {
           />
         ) : (
           <div className="relative w-56 h-56">
-            <Image
-              src={altImg.url}
-              alt={altImg.id}
-              fill
-              style={{ objectFit: "cover" }}
-              sizes="25vw"
-              className="absolute rounded-md"
-            />
+            <p>no image</p>
           </div>
         )}
       </>
@@ -66,20 +59,18 @@ export default async function Product({ product, ownShop }) {
         {/* If ownShop bool was passed as prop and is true (product was added by logged in user) then show edit product button, otherwise add to cart button */}
 
         {ownShop ? (
-        // <button className="cart-button">Edit Product</button>
-        <Link
-          href={`/products/${product.id}?edit=true`}
-          className="cart-button"
-        >
-          Edit Product
-        </Link>
-      ) : (
-        <AddToCartButton className="cart-button" product={product} />
-      )}
-      {/* <button className="cart-button">Add to Cart</button> */}
-
-       
+          // <button className="cart-button">Edit Product</button>
+          <Link
+            href={`/products/${product.id}?edit=true`}
+            className="cart-button"
+          >
+            Edit Product
+          </Link>
+        ) : (
+          <AddToCartButton className="cart-button" product={product} />
+        )}
+        {/* <button className="cart-button">Add to Cart</button> */}
+      </div>
     </div>
-  </div>
   );
 }
