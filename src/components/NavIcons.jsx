@@ -24,7 +24,6 @@ export default function NavIcons() {
       </SignedOut>
 
       <SignedIn>
-        <Link href="/user"></Link>
         <CstmUserBtn />
       </SignedIn>
       <div className="relative cursor-pointer">

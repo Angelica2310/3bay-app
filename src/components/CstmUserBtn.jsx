@@ -44,6 +44,23 @@ export default function CstmUserBtn() {
               <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
                 <SignOutButton />
               </DropdownMenu.Item>
+              <div className="xl:hidden md:visible">
+                <DropdownMenu.Separator className="m-[5px] h-px bg-black" />
+                <DropdownMenu.Item>Site Navigation</DropdownMenu.Item>
+                <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
+                  <Link href="/">Homepage</Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
+                  <Link href="/browse">Browse</Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
+                  <Link href="/about">About</Link>
+                </DropdownMenu.Item>
+                <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
+                  <Link href="/contact">Contact</Link>
+                </DropdownMenu.Item>
+              </div>
+
               <DropdownMenu.Separator className="m-[5px] h-px bg-black" />
               <DropdownMenu.Item className="group relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[5px] text-[13px] leading-none text-black outline-none data-[highlighted]:bg-purple-100 data-[highlighted]:text-bratwurst">
                 <Link href="/clerk">Manage Clerk Account</Link>
