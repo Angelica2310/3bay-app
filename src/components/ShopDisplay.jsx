@@ -10,9 +10,6 @@ export default async function ShopDisplay({ shop, ownShop }) {
 
   return (
 
-    <div className="flex flex-col h-full w-full items-center">
-      <h3 className="mt-10 bg-gingeralefizz px-6 py-2 rounded-t-3xl text-2xl pb-1 font-bold">
-
     <div
       className={`bg-color-${shop.theme} bg-color-card-${shop.theme} flex flex-col h-full w-full  items-center `}
     >
