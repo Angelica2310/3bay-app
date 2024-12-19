@@ -88,7 +88,7 @@ Using discord, we have shared important information such as environment variable
 
 ## Planning
 
-Our planning for this project was extensive. We began discussing our ideas, before settling on a direction with some user stories and desired functionality. With this in hand we created a Figjam board and worked together to define what pages would be needed, how the layout would look and the form that user journeys would take.
+Our planning for this project was extensive. We began discussing our ideas, before settling on a direction with some user stories and desired functionality. With this in hand we created a Figjam board and worked together to define what pages would be needed and designed our wireframe based on this, then explored the form that user journeys would take.
 
 Once we had our layout, refined our user stories and defined our MVP, we designed our required database tables together before adding the SQL required to create them.
 
@@ -119,14 +119,6 @@ Seller:
 - Sellers can create a store front to display their products and a form to add new products. (stored in a database).
 - Buyers can browse products and store fronts or search for specific products.
 - Buyers can add products to basket and then make a payment.
-
-### Wireframe
-
-Wireframe image here
-
-### User Journey
-
-Journey here
 
 ### Future Considerations
 
