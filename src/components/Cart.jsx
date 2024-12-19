@@ -110,7 +110,7 @@ export default function Cart({ children }) {
                 <div>{children}</div>
 
                 <Link
-                  href="/products"
+                  href="/browse"
                   className="px-4 py-3 inline-block text-lg w-full text-center font-medium text-bratwurst bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100"
                 >
                   Back to products

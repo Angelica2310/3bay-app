@@ -47,7 +47,7 @@ const CheckOutForm = ({ totalAmount }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://www.localhost:3000/payment-success?totalAmount=${totalAmount}`,
+        return_url: `https://3bay-app.vercel.app/payment-success?totalAmount=${totalAmount}`,
       },
     });
 
