@@ -11,7 +11,6 @@ import { db } from "@/utils/db";
 export async function generateMetadata({ params, searchParams }, parent) {
   const id = (await params).id;
 
-
   const product = (await db.query(`SELECT * FROM products WHERE id = ${id}`))
     .rows[0];
 
@@ -121,7 +120,6 @@ export default async function SingleProductPage({ params, searchParams }) {
                 edit={edit}
               />
             ) : (
-
               <div className="bg-gingeralefizz rounded-2xl">
                 <AddToCartButton product={product} />
               </div>
