@@ -6,7 +6,7 @@ export default function CartItems({ cart, deleteItemFromCart, totalPrice }) {
     <div>
       <h2 className="text-xl text-stormygreen">Shopping Cart</h2>
       {/* // CART ITEMS */}
-      {cart?.cartItems.map((cartItem) => {
+      {cart?.cartItems?.map((cartItem) => {
         // console.log("cartItem", cartItem);
         return (
           <div className="flex flex-col gap-8" key={`cart-${cartItem.name}`}>
