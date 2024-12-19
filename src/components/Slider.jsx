@@ -34,13 +34,13 @@ const slides = [
 export default function Slider() {
   const [current, setCurrent] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  //   }, 3000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 3000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] overflow-hidden">
@@ -58,7 +58,7 @@ export default function Slider() {
               <h2 className="text-xl lg:text-3xl 2xl:text-5xl text-black">
                 {slide.description}
               </h2>
-              <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold">
+              <h1 className="text-5xl lg:text-6xl 2xl:text-8xl font-semibold text-red-700">
                 {slide.title}
               </h1>
               <Link href={slide.url}>
@@ -70,7 +70,7 @@ export default function Slider() {
             <div className="h-1/2 xl:w-1/2 xl:h-full relative">
               <Image
                 src={slide.img}
-                alt=""
+                alt="hero img"
                 fill
                 sizes="100%"
                 className="object-cover"
