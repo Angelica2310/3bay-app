@@ -136,3 +136,8 @@ With enough time, we would love to add additional functionality, such as:
 - Ability for users to rate, review and favourite products and stores
 - Messaging capability between buyers and sellers
 - Show previous purchaes and recently viewed products
+
+### DATABASE SCREENSHOT
+![Screenshot 2024-12-20 at 11 20 22](https://github.com/user-attachments/assets/f635c514-817a-4531-8357-4e3da1650561)
+
+
